@@ -1,3 +1,29 @@
+# Self-added file extensions
+*.backup
+*.mkv
+*.DS_Store
+*settings.json
+*.tgz
+.DS_Store
+
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.nav
+*.out
+*.snm
+*.gz
+*.bak
+*.toc
+*.synctex
+*.synctex.gz
+
+# Folder for sources
+sources
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
