@@ -1,0 +1,153 @@
+% Settings for the default beamer theme
+\documentclass[english, aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{babel}
+\usepackage[ruled,vlined]{algorithm2e}
+\SetAlgorithmName{Algoritmus}{algoritmus}{List of Algorithms}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeatletter
+
+\newcommand\makebeamertitle{\frame{\maketitle}}
+
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+% Theme settings
+\usetheme{Frankfurt}
+\usecolortheme{default}
+\usefonttheme[onlymath]{serif}
+
+% Template settings
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true, shadow=false]
+\makeatother
+
+% Define a custom darker red color
+\definecolor{DarkerRed}{RGB}{139,0,0} % Adjust the RGB values as needed
+
+% Use the newly defined color in Beamer theme elements
+\setbeamercolor{structure}{fg=DarkerRed} % Changes basic structural elements to Darker Red
+\setbeamercolor{title in head/foot}{bg=DarkerRed} % Changes the title in header/footer to Darker Red
+
+
+\begin{document}
+
+% Title page
+\section{Bevezetés}
+\title[]{Üzleti Elemzések Módszertana}
+\subtitle{Tantárgyi útmutató}
+\author[Kuknyó Dániel]{Kuknyó Dániel\\Budapesti Gazdasági Egyetem}
+\date{2023/24\\2.félév}
+\makebeamertitle
+
+\begin{frame}{A jegy összetétele}
+\begin{itemize}
+	\item Összesen 100p gyűjthető
+	\item Két elméleti teszt, egyenként 10-10p: az előadáson elhangzottakból
+	\item 80p csoportos projekt feladat:
+	\begin{itemize}
+		\item Max. 3 fős csapatok
+		\item Téma kiválasztása és kidolgozása
+		\item A projekt összetétele:
+		\begin{itemize}
+			\item Jelenléti előadás
+			\item Elemzési csővezeték (program)
+			\item Dokumentáció
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ponthatárok}
+\begin{itemize}
+	\item A teljes pontszám az elméleti tesztek és a beadandók összege
+	\item Ponthatárok:\\
+	$90 \leq x \leq 100 \rightarrow 5$\\
+	$80 \leq x < 90 \rightarrow 4$\\
+	$70 \leq x < 80 \rightarrow 3$\\
+	$60 \leq x < 70 \rightarrow 2$\\
+	$x < 60 \rightarrow 1$
+	\item Ha a Hallgatónak nem sikerül elérnie a minimum követelményt, tehet vizsgát
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A téma kidolgozása}
+\begin{itemize}
+	\item A témáktól el lehet térni olyan algoritmusokra, modellfajtákra, amelyek az óra tárgyát nem képezték. Ha pl. valaki be szeretne mutatni egy transzfertanulási esettanulmányt, teljes értékű munkának számít! (Természetesen a módszertani témán belül maradva)
+	\item A munka egyedisége és eredetisége elvárt és ellenőrzött.
+	\item Konzultációs időre lehetősége van minden csapatnak, ahol feltehetik a kérdéseiket, tanácsot kérhetnek. Ez kb. 20-30 perc, Teams felületen.
+	\item Ha nem teljesen világos a projekt terjedelme (mit, mennyit, milyen részletesen...) konzultáció keretein belül közösen segítünk meghatározni.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A téma kidolgozása}
+\begin{itemize}
+	\item Terjedelem: min. 4-5 oldal képek nélkül Latex-ban vagy Lyx-ben megírva\par\smallskip
+	\item Tartalma:
+	\begin{itemize}
+		\item Az elemzés célja, megválaszolandó kérdések
+		\item Adatforrások bemutatása, tisztítási módszerek és ezek elméleti alapjai
+		\item A felhasznált módszerek és ezek elméleti alapjai
+		\item A hiperparaméter optimalizálás módszerei és eredményei
+		\item A kutatási eredmények ismertetése, vizuális bemutatása
+		\item Javaslatok és további fejlesztés lehetőségei, más rendszerekkel való kapcsolatok
+	\end{itemize}\par\smallskip
+	\item Csatolni kell [MintaPeter\_VincsEszter\_TesztElek.zip]:
+	\begin{itemize}
+		\item A felhasznált adatokat, és a linket ahonnan az adatok származnak [.csv, .xlsx]
+		\item A programkódot, ami az elemzést megvalósítja [.py, .ipynb stb...]
+		\item Az elemzéshez tartozó dokumentációt [.pdf]
+		\item Az elemzésről szóló bemutatót [.pptx stb...]
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Választható témák}
+\begin{enumerate}
+	\item Regresszió [Lineáris, Logisztikus] és Gradiens ereszkedés [Kötegelt, Sztochasztikus, Mini-kötegelt]
+	\item Döntési fák, véletlen erdő [Bagging, Pasting, optimalizálás] Turbózás, együttes tanulás [Adaboost, GBM, XGBoost]
+	\item Regularizált modellek [Lasso, Ridge, Elasztikus hálók]
+	\item Tartó vektor gépek [Lineáris, Polinomikus, Gauss-i]
+	\item Generatív modellek [Naive Bayes, Gauss-i keverékek]
+	\item Ajánló rendszerek [Kollaboratív, metaadat-alapú]
+	\item Dimenziócsökkentés és klaszterezés [PCA, K-Means, Dbscan, Gauss-i]
+	\item Neurális hálózatok és mélytanulás
+	\item Megerősített tanulás
+\end{enumerate}
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
