@@ -5,6 +5,7 @@
 *settings.json
 *.tgz
 .DS_Store
+sources/*
 
 # LaTeX
 *.aux
