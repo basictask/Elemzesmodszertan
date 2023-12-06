@@ -8,6 +8,7 @@
 \SetAlgorithmName{Algoritmus}{algoritmus}{List of Algorithms}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+\definecolor{lightgray}{gray}{0.9}
 
 \makeatletter
 
@@ -135,8 +136,101 @@ Az osztályozás a felügyelt gépi tanulás egyik alapvető feladata, amelynek 
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
-\includegraphics[width=7cm, height=7cm, keepaspectratio]{}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/osztalyozas_4.png}
 \end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Modellalapú osztályozás}
+\begin{columns}
+\begin{column}{.5\textwidth}
+Az osztályozó modell feladata, hogy a tanító adathalmaza alapján olyan szabályrendszert hozzon létre, ami \textbf{képes elszeparálni egymástól az egyedeket}.\par\medskip
+Amennyiben érkezik egy új adatpont, a modell a saját szabályrendszere segítségével már \textbf{képes lesz becslést adni annak osztályára vonatkozóan}. 
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/osztalyozas_5.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Modellalapú osztályozás}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\begin{block}{Döntési határ}
+Olyan \textbf{határérték, amelyet a modell állít be} az adatpontok különböző osztályokba való besorolásához.\par\smallskip
+A határ \textbf{lehet egy vonal, egy sík vagy akár egy sokdimenziós felület}, attól függően, hogy milyen típusú osztályozó modellt használunk és milyen a bemeneti adatok dimenzionalitása.
+\end{block}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/osztalyozas_6.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Az osztályozás fajtái}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\only<1>{\begin{block}{Bináris osztályozás}
+A modell két lehetséges osztály közül valamelyikbe sorolja be az egyedeket. Minden egyedhez csakis 1 osztály tartozhat.
+\end{block}}
+\only<2>{\begin{block}{Multiosztályos osztályozás}
+Több, mint két lehetséges kategória létezik, amibe az egyedek besorolhatók, ezek közül az egyikbe fog sorolódni az egyed. Minden egyedhez legalább és legfeljebb 1 osztály tartozik.
+\end{block}}
+\only<3>{\begin{block}{Multicímkés osztályozás}
+Minden mintaegyedhez több bináris vagy multicímkés címkekategóriából tartozhat osztály.
+\end{block}}
+\only<4>{\begin{block}{Multioutput osztályozás}
+A multicímkés osztályozás generalizált változata. Egy egyedhez egy multicímkés halmazból több elem is tartozhat.
+\end{block}}
+\end{column}
+\begin{column}{.5\textwidth}
+\only<1>{\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/osztalyozas_7.png}
+\end{center}}
+\only<2>{\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/osztalyozas_8.png}
+\end{center}}
+\only<3>{\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/osztalyozas_9.png}
+\end{center}}
+\only<4>{\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/osztalyozas_10.png}
+\end{center}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Osztályozás vagy regresszió?}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Példa}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A következő kis adathalmaz három sakkjátszmának rögzítette az eredményét. Minden meccs esetén rögzítésre kerültek a következő rekordok:\par\medskip
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Rangok különbsége & Fehér nyert\\
+\hline
+$200$ & $0$\\
+\hline
+$-200$ & $1$\\
+\hline
+$300$ & $0$\\
+\hline
+\end{tabular}
+\end{center}
+\end{column}
+\begin{column}{.5\textwidth}
+
 \end{column}
 \end{columns}
 \end{frame}
