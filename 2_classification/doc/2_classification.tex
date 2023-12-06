@@ -342,6 +342,92 @@ R = \frac{TP}{TP + FN}
 \end{columns}
 \end{frame}
 
+\begin{frame}{Konfúziós mátrix}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A konfúziós mátrix vagy zavarmátrix a statisztikában és gépi tanulásban használatos egy gépi tanulási \textbf{algoritmus teljesítményének mérésére}.\par\smallskip
+A mátrix segít megérteni, hogy \textbf{milyen hibákat követett el a modell} és ezáltal segíti a modell finomhangolását és tovább tanítását.\par\smallskip
+A mátrix általánosítható tetszőleges címke számra. 
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=6cm, keepaspectratio]{images/osztalyozas_17.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Logisztikus regresszió}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Logisztikus regresszió}
+\begin{columns}
+\begin{column}{.5\textwidth}
+Gépi tanulási módszer kétosztályos (bináris) kimenetelek előrejelzésére, amely valószínűségek megbecslésére szolgál. A logisztikus regresszió eljárása:\par\smallskip
+\begin{enumerate}
+	\item Adott mintaegyedre annak a valószínűségnek a megbecslése, hogy a modell a pozitív osztályba tartozik-e. 
+	\item Ha a becsült valószínűség magasabb mint egy küszöbérték, a becsült osztály pozitív, egyébként negatív.
+\end{enumerate}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{block}{}
+\[
+\hat{y}\begin{cases}
+_{1}^{0} & _{ha\;\hat{p}\,\leq\,\theta}^{ha\;\hat{p}\,>\,\theta}\end{cases}
+\]
+Ahol $\hat{p}$ a modell által becsült valószínűség, $\hat{y}$ a becsült osztály és $\theta$ a küszöbérték.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{A logisztikus függvény}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A logisztikus függvény a valószínűségek megbecslésére használt modell típus. A predikció előállításához először az eljárás előállítja $z$ lineáris predikciót:
+\begin{block}{}
+\vspace{-.6cm}
+\[
+z = \theta_0 + \theta_1x_1 + \theta_2x_2 + \ldots + \theta_rx_r
+\]
+\end{block}
+Majd ezt behelyettesíti a logisztikus függvénybe: 
+\begin{block}{}
+\[
+\sigma\left( z \right) = \frac{1}{1 + e^z}
+\]
+\end{block}
+Ahol $\sigma$ a logisztikus függvény és $e$ a természetes logaritmus értéke. 
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/osztalyozas_18.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{A logisztikus regresszió költségfüggvénye}
+A logisztikus regresszió célja, hogy \textbf{magas valószínűséggel osztályozzon pozitív egyedeket és alacsony valószínűséggel osztályozzon negatív egyedeket}.\par\smallskip
+A költségfüggvény egy mintaegyedre: 
+\begin{block}{}
+\[
+J\left( \theta \right) = \begin{cases}
+_{-log\left(1-\hat{p}\right)}^{-log\left(\hat{p}\right)} & _{ha\;\hat{y}=0}^{ha\;\hat{y}=1}\end{cases}
+\]
+\end{block}
+Az összes mintaegyedre kiszámított költségfüggvény az egyedi költségfüggvények összege:
+\begin{block}{}
+\[
+J\left( \theta \right) = -\frac{1}{n} \sum_{i=1}^n \left[ y_i \cdot log \left( \hat{p}_i \right) + \left(1 - y_i \right) \cdot log \left( 1 - \hat{p}_i \right) \right]
+\]
+\end{block}
+A költségfüggvény konvex, de nem létezik a minimum megtalálására zárt formájú számítás. Ennek megfelelően a minimum közelítése iteratív algoritmusokkal lehetséges.
+\end{frame}
+
 \end{document}
 
 
