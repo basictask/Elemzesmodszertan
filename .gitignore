@@ -9,6 +9,7 @@ sources/*
 
 # LaTeX
 *.aux
+*.fls
 *.bbl
 *.blg
 *.log
@@ -20,6 +21,7 @@ sources/*
 *.toc
 *.synctex
 *.synctex.gz
+*.fdb_latexmk
 
 # Folder for sources
 sources

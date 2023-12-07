@@ -384,7 +384,7 @@ Ahol $\hat{p}$ a modell által becsült valószínűség, $\hat{y}$ a becsült o
 \end{columns}
 \end{frame}
 
-\begin{frame}{A logisztikus függvény}
+\begin{frame}{A logisztikus (szigmoid) függvény}
 \begin{columns}
 \begin{column}{.5\textwidth}
 A logisztikus függvény a valószínűségek megbecslésére használt modell típus. A predikció előállításához először az eljárás előállítja $z$ lineáris predikciót:
@@ -442,14 +442,56 @@ A következő példában a minta adathalmaz Írisz virágokról tartalmaz inform
 \end{frame}
 
 \begin{frame}{Logisztikus regresszió az Írisz adathalmazon}
+A következő példában egy bináris osztályozás a feladat. A \textbf{logisztikus regresszió eredménye egy 1D döntési határ}.\par\smallskip
+Az Iris Virginica sziromszélességei 1.4-től 2.5cm-ig terjednek, míg a többi Iris virág szirmai 0.1 és 1.8cm közöttiek. A döntési határ 1.65cm körül húzódik. 2cm fölött a modell egészen biztos benne, hogy Virginicáról van szó, 1cm alatt szinte biztos benne, hogy nem tartozik az osztályba.\par\smallskip
+\begin{center}
+\includegraphics[width=11cm, height=7cm, keepaspectratio]{images/osztalyozas_20.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Logisztikus regresszió több változóval}
+Ha több $x$ változó alapján történik a modellezés, a döntési határ is több dimenziós lesz. Az alábbi példában a szirom szélesség és a szirom hossz alapján készült a becslés.\par\smallskip
+Ebben az esetben a becsült valószínűség a 3. dimenzió és a határ ott húzódik, ahol a becsült valószínűség megegyezik a küszöbértékkel, tehát $\hat{p} = \theta$.
+\begin{center}
+\includegraphics[width=11cm, keepaspectratio]{images/osztalyozas_21.png}
+\end{center} 
+\end{frame}
+
+\section{Softmax regresszió}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Softmax regresszió}
 \begin{columns}
 \begin{column}{.5\textwidth}
-
+A logisztikus regresszió általánosítható tetszőleges számú ($k$) osztályra. \textbf{Ebben az esetben a modell azt becsüli meg, hogy mekkora valószínűséggel tartozik az egyed az adott osztályokba}.\par\smallskip
+Adott $k$ osztályra számított beletartozási valószínűség: 
+\begin{block}{}
+\[
+\hat{p}_k = \sigma \left( s \left( x \right) \right)_k = \frac{e^{x^T \theta_k}}{\sum_{j=1}^k e^{x^T \theta_j}}
+\]
+\end{block}
+Ahol $\sigma$ a logisztikus függvény és $\theta_k$ pedig $k$ osztály tanítható paraméter vektora. 
 \end{column}
 \begin{column}{.5\textwidth}
-
+Miután a modell kiszámolta, hogy $x$ mintaegyed mekkora valószínűséggel tartozik minden osztályba, \textbf{kiválasztja ezek közül a legnagyobb becsült valószínűséghez tartozót, és ez lesz a becsült érték}:
+\begin{block}{}
+\[
+\hat{y} = \underset{k}{argmax}\left( \sigma \left( s \left( x \right) \right)_k \right)
+\]
+\end{block}
+Az $argmax$ operátor a változónak azt az értékét téríti vissza, amelyik maximalizálja az adott kritériumot. Ebben az esetben a kritérium a legnagyobb valószínűség.
 \end{column}
 \end{columns}
+\end{frame}
+
+\begin{frame}{Softmax regresszió az Írisz adathalmazon}
+A kép a létrejövő döntési határokat mutatja. Érdemes megfigyelni, hogy az osztályok között létrejövő döntési határok lineárisak. A görbe vonal az ábrán a Versicolor osztályhoz tartozó valószínűség.
+\begin{center}
+\includegraphics[width=11cm, height=7cm, keepaspectratio]{images/osztalyozas_22.png}
+\end{center}
 \end{frame}
 
 \end{document}
