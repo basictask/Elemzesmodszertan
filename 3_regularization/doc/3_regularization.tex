@@ -341,6 +341,34 @@ Minden technika ide tartozik, ami a tanítási fázisban jellemzőkiválasztást
 \end{columns}
 \end{frame}
 
+\begin{frame}{Korai leállás}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A korai leállás egy olyan technika gépi tanulásban amely \textbf{segít megakadályozni a túltanulást egy tanítási folyamat során}.\par\medskip
+Ezáltal \textbf{leállítja a tanítást, amint a hálózat teljesítménye elkezd romlani}, vagy nem javul tovább a validációs adatkészleten.
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/regularization_16.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{$k$-hajtásos keresztvalidáció}
+\begin{columns}
+\begin{column}{.4\textwidth}
+A technika az eredeti adatkészletet $k$ egyenlő részre osztja, \textbf{majd minden iterációban egy különböző részhalmazt használ tesztelésre, a többit pedig tanításra}.\par\medskip
+Ez lehetővé teszi \textbf{a modell általánosító képességének pontosabb becslését}.
+\end{column}
+\begin{column}{.6\textwidth}
+\begin{center}
+\includegraphics[width=9cm, height=9cm, keepaspectratio]{images/regularization_18.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
 \end{document}
 
 
