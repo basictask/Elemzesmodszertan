@@ -1,0 +1,50 @@
+digraph regularization {
+    graph [dpi=300]
+    rankdir="TD"
+    compound=true
+
+    subgraph cluster_1 {
+        style="invis"
+        diamond1 [label="" shape="diamond", penwidth=4, style="filled", fillcolor="lightblue"]
+        diamond2 [label="" shape="diamond", penwidth=4, style="filled", fillcolor="lightblue"]
+        diamond3 [label="" shape="diamond", penwidth=4, style="filled", fillcolor="lightblue"]
+        diamond4 [label="" shape="diamond", penwidth=4, style="filled", fillcolor="lightblue"]
+        diamond5 [label="" shape="diamond", penwidth=4, style="filled", fillcolor="lightblue"]
+        diamond6 [label="" shape="diamond", penwidth=4, style="filled", fillcolor="lightblue"]
+        diamond7 [label="" shape="diamond", penwidth=4, style="filled", fillcolor="lightblue"]
+    }
+
+    subgraph cluster_2 {
+        style="invis"
+        circle11 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle12 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle13 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle14 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle15 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle16 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle17 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle18 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle19 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+    }
+
+    subgraph cluster_3 {
+        style="invis"
+        circle21 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle22 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle23 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle24 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle25 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+    }
+
+    subgraph cluster_4 {
+        style="invis"
+        circle31 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle32 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle33 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+    }
+
+    diamond4 -> circle15 [ltail=cluster_1, lhead=cluster_2, minlen=2, width=4];
+    circle15 -> circle23 [ltail=cluster_2, lhead=cluster_3, minlen=2]
+    circle23 -> circle32 [ltail=cluster_3, lhead=cluster_4, minlen=2]
+
+}

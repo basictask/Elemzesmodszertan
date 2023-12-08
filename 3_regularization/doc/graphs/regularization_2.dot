@@ -1,0 +1,37 @@
+digraph regularization {
+    graph [dpi=300]
+    rankdir="TD"
+    compound=true
+    splines="false"
+
+    subgraph cluster_1 {
+        style="invis"
+        circle11 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle12 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle13 [label="" shape="circle", penwidth=4, style="filled", fillcolor="red"]
+        circle14 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle15 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle16 [label="" shape="circle", penwidth=4, style="filled", fillcolor="red"]
+        circle17 [label="" shape="circle", penwidth=4, style="filled", fillcolor="red"]
+        circle18 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle19 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]    
+    }
+
+    subgraph cluster_3 {
+        style="invis"
+        circle21 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle22 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle24 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle25 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle28 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle29 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]    
+    }
+
+    circle11 -> circle21 [minlen=2]
+    circle12 -> circle22 [minlen=2]
+    circle14 -> circle24 [minlen=2]
+    circle15 -> circle25 [minlen=2]
+    circle18 -> circle28 [minlen=2]
+    circle19 -> circle29 [minlen=2]
+
+}

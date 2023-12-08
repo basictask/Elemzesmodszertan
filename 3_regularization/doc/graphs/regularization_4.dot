@@ -1,0 +1,45 @@
+digraph regularization {
+    graph [dpi=300]
+    rankdir="TD"
+    compound=true
+
+    subgraph cluster_2 {
+        style="invis"
+        circle11 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle12 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle13 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle14 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle15 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle16 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle17 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle18 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle19 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+    }
+
+    subgraph cluster_3 {
+        style="invis"
+        circle21 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle22 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle23 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle24 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle25 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+    }
+
+    subgraph cluster_4 {
+        style="invis"
+        circle31 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle32 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle33 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+    }
+    invisibleNode [label="", shape="circle", height=0, width=0]
+
+    model [label="Modell", shape="diamond", width=2, height=1, penwidth=4, style="filled", fillcolor="orange"]
+
+    circle15 -> invisibleNode [dir=none]
+    invisibleNode -> circle23 [label=" Halmaz kiválasztása", ltail=cluster_2, lhead=cluster_3, minlen=2]
+    circle23 -> model [label=" Kiértékelés"]
+    model -> circle32 [label=" Optimális", ltail=cluster_3, lhead=cluster_4, minlen=2]
+    model:e -> invisibleNode [constraint="false", taillabel="               Kalibráció", headlabel="Iteráció  "]
+
+
+}

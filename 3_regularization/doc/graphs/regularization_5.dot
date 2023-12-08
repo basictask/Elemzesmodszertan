@@ -1,0 +1,27 @@
+digraph regularization {
+    graph [dpi=300]
+    rankdir="TD"
+    compound=true
+
+    subgraph cluster_3 {
+        style="invis"
+        circle21 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle22 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle23 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle24 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle25 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+    }
+
+    subgraph cluster_4 {
+        label="Modell"
+        penwidth=4
+        style="filled"
+        fillcolor="orange"
+        circle31 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle32 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle33 [label="" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+    }
+
+    circle23 -> circle32 [ltail=cluster_3, lhead=cluster_4, minlen=2]
+
+}
