@@ -1,0 +1,10 @@
+digraph decision_trees {
+    graph [dpi=300]
+    rankdir="TD"
+    
+    root [shape="rectangle", label="x változó", style="filled", fillcolor="royalblue"]
+    node_1 [shape="rectangle", label="y helyes\ny helytelen", style="filled", fillcolor="gold"]
+    node_2 [shape="rectangle", label="y helyes\ny helytelen", style="filled", fillcolor="gold"]
+    root -> node_1 [label=<x&le;t<sub>x</sub>>]
+    root -> node_2 [label=<x&gt;t<sub>x</sub>>]
+}

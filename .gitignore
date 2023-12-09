@@ -15,6 +15,7 @@ sources/*
 *.log
 *.nav
 *.out
+*.dvi
 *.snm
 *.gz
 *.bak

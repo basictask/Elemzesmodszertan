@@ -1,0 +1,39 @@
+digraph decision_trees {
+    graph [dpi=300]
+    rankdir="TD"
+    // root: royalblue
+    // intermediate: lightblue
+    // leaf: gold 
+
+    A [label="", shape="rectangle", style="filled", fillcolor="royalblue"]
+    B [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+    C [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+    D [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+    F [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+    E11 [label="7 : 26", shape="rectangle", style="filled", fillcolor="gold"]
+    E12 [label="6 : 76", shape="rectangle", style="filled", fillcolor="gold"]
+    E2 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    G1 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    G2 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    H1 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    H2 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    
+    G [label="G = 0.29", shape="plaintext"]
+
+    A -> B
+    A -> C
+    B -> D
+    B -> E11
+    B -> E12
+    C -> F
+    C -> E2
+    D -> G1
+    D -> H1
+    F -> G2
+    F -> H2
+
+    G -> E11 [constraint="false", style="dashed"]
+    G -> E12 [constraint="false", style="dashed"]
+
+    {rank="same"; H1; G}
+}

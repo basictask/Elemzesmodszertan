@@ -1,0 +1,27 @@
+digraph decision_trees {
+    graph [dpi=300]
+    rankdir="TD"
+
+    A [label="Bugos a program", shape="rectangle", style="filled", fillcolor="royalblue"]
+    B [label="Miattad bugos", shape="rectangle", style="filled", fillcolor="lightblue"]
+    C [label="Hozzá akarsz írni", shape="rectangle", style="filled", fillcolor="lightblue"]
+    D [label="Így is működik", shape="rectangle", style="filled", fillcolor="lightblue"]
+    F [label="<1 órád van", shape="rectangle", style="filled", fillcolor="lightblue"]
+    E1 [label="Minden rendben", shape="rectangle", style="filled", fillcolor="gold"]
+    E2 [label="Minden rendben", shape="rectangle", style="filled", fillcolor="gold"]
+    G1 [label="Hagyd békén", shape="rectangle", style="filled", fillcolor="gold"]
+    G2 [label="Hagyd békén", shape="rectangle", style="filled", fillcolor="gold"]
+    H1 [label="Kezdj neki", shape="rectangle", style="filled", fillcolor="gold"]
+    H2 [label="Kezdj neki", shape="rectangle", style="filled", fillcolor="gold"]
+
+    A -> B [label="T"]
+    A -> C [label="F"]
+    B -> D [label="T"]
+    B -> E1 [label="F"]
+    C -> F [label="T"]
+    C -> E2 [label="F"]
+    D -> G1 [label="T"]
+    D -> H1 [label="F"]
+    F -> G2 [label="T"]
+    F -> H2 [label="F"]
+}

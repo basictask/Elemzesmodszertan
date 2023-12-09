@@ -1,0 +1,42 @@
+digraph decision_trees {
+    graph [dpi=300]
+    rankdir="TD"
+    // root: royalblue
+    // intermediate: lightblue
+    // leaf: gold 
+
+    A [label="", shape="rectangle", style="filled", fillcolor="royalblue"]
+    B [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+    C [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+    D [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+    F [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+    E1 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    E2 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    G1 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    G2 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    H1 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    H2 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+
+    root [label="Gyökér csomópont", shape="plaintext"]
+    internal [label="Internális csomópont", shape="plaintext"]
+    leaf [label="Levél csomópont", shape="plaintext"]
+
+    {rank="same"; A, root}
+    {rank="same"; B, C, internal}
+    {rank="same"; G1, G2, H1, H2, leaf}
+
+    A -> B
+    A -> C
+    B -> D
+    B -> E1
+    C -> F
+    C -> E2
+    D -> G1
+    D -> H1
+    F -> G2
+    F -> H2
+
+    root -> A [minlen=2]
+    internal -> B [minlen=2]
+    leaf -> G2 [constraint="false", minlen=2]
+}
