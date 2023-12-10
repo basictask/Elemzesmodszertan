@@ -1,0 +1,82 @@
+digraph decision_trees {
+    graph [dpi=300]
+    rankdir=""
+    // root: royalblue
+    // intermediate: lightblue
+    // leaf: gold 
+
+    subgraph cluster_1 {
+        style="invis"
+        A1 [label="", shape="rectangle", style="filled", fillcolor="royalblue"]
+        B1 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        C1 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        D1 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        F1 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        E11 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        E12 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        G11 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        G12 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        H11 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        H12 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    }
+
+    subgraph cluster_2 {
+        style="invis"
+        A2 [label="", shape="rectangle", style="filled", fillcolor="royalblue"]
+        B2 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        C2 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        D2 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        F2 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        G21 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        G22 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        H21 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        H22 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    }
+
+    subgraph cluster_3 {
+        style="invis"
+        A3 [label="", shape="rectangle", style="filled", fillcolor="royalblue"]
+        B3 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        C3 [label="", shape="rectangle", style="filled", fillcolor="lightblue"]
+        G31 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        G32 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        H31 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+        H32 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    }
+
+    root [label="", shape="rectangle", style="filled", fillcolor="gold"]
+
+    {rank="same"; root; A1; A2; A3}
+
+    A1 -> B1
+    A1 -> C1
+    B1 -> D1
+    B1 -> E11
+    C1 -> F1
+    C1 -> E12
+    D1 -> G11
+    D1 -> H11
+    F1 -> G12
+    F1 -> H12
+
+    A2 -> B2
+    A2 -> C2
+    B2 -> D2
+    C2 -> F2
+    D2 -> G21
+    D2 -> H21
+    C2 -> G22
+    F2 -> H22
+    F2 -> G21
+
+    A3 -> B3
+    A3 -> C3
+    B3 -> G31
+    B3 -> H31
+    C3 -> G32
+    C3 -> H32
+
+    root -> A1 [label="+", ltail=root, lhead=cluster_1, minlen=5, style="dashed"]
+    A1 -> A2 [label="+", ltail=cluster_1, lhead=cluster_2, minlen=5, style="dashed"]
+    A2 -> A3 [label="+", ltail=cluster_2, lhead=cluster_3, minlen=5, style="dashed"]
+}

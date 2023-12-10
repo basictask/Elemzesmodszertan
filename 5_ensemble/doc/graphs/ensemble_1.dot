@@ -1,0 +1,44 @@
+digraph ensemble {
+    graph [dpi=300]
+    rankdir=""
+
+    root1 [label=<x<sub>1</sub>>, shape="rectangle", style="filled", fillcolor="royalblue"]
+    root2 [label=<x<sub>2</sub>>, shape="rectangle", style="filled", fillcolor="royalblue"]
+    root3 [label=<x<sub>3</sub>>, shape="rectangle", style="filled", fillcolor="royalblue"]
+
+    leaf11 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    leaf12 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    leaf21 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    leaf22 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    leaf31 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+    leaf32 [label="", shape="rectangle", style="filled", fillcolor="gold"]
+
+    G1 [label=<G(x<sub>1</sub>) = 0.35>, shape="plaintext"]
+    G2 [label=<G(x<sub>2</sub>) = 0.2>, shape="plaintext"]
+    G3 [label=<G(x<sub>3</sub>) = 0.4>, shape="plaintext"]
+
+    root1 -> leaf11
+    root1 -> leaf12
+    root2 -> leaf21
+    root2 -> leaf22
+    root3 -> leaf31
+    root3 -> leaf32
+
+    G1 -> root1 [style="invis"]
+    G2 -> root2 [style="invis"]
+    G3 -> root3 [style="invis"]
+
+    leaf11 -> root2 [style="invis"]
+    leaf12 -> root2 [style="invis"]
+    leaf21 -> root3 [style="invis"]
+    leaf22 -> root3 [style="invis"]
+
+    {rank="same"; root1, G1}
+    {rank="same"; leaf11, leaf12}
+    {rank="same"; root2, G2}
+    {rank="same"; leaf21, leaf22}
+    {rank="same"; root3, G3}
+    {rank="same"; leaf31, leaf32}
+
+
+}

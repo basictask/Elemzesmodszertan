@@ -1,0 +1,21 @@
+digraph decision_trees {
+    graph [dpi=300]
+    rankdir=""
+    // root: royalblue
+    // intermediate: lightblue
+    // leaf: gold 
+    A [label="nem = Nő", shape="rectangle", style="filled", fillcolor="royalblue"]
+    B [label="Magasság > 1.6", shape="rectangle", style="filled", fillcolor="lightblue"]
+    C [label="Szemszín nem kék", shape="rectangle", style="filled", fillcolor="lightblue"]
+    G1 [label="-14.7", shape="rectangle", style="filled", fillcolor="gold"]
+    G2 [label="3.8", shape="rectangle", style="filled", fillcolor="gold"]
+    H1 [label="4.8", shape="rectangle", style="filled", fillcolor="gold"]
+    H2 [label="16.8", shape="rectangle", style="filled", fillcolor="gold"]
+
+    A -> B
+    A -> C
+    B -> G1
+    B -> H1
+    C -> G2
+    C -> H2
+}

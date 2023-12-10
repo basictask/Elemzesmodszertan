@@ -1,0 +1,60 @@
+digraph ensemble {
+    graph [dpi=300]
+    rankdir=""
+
+    root1 [label="", shape="rectangle", style="filled", fillcolor="royalblue", height=1, width=1]
+    leaf11 [label="A", shape="rectangle", style="filled", fillcolor="gold", height=1, width=1, fontsize=25]
+    leaf12 [label="B", shape="rectangle", style="filled", fillcolor="gold", height=1, width=1, fontsize=25]
+
+    root2 [label="", shape="rectangle", style="filled", fillcolor="royalblue", height=1.2, width=1.2]
+    leaf21 [label="A", shape="rectangle", style="filled", fillcolor="gold", height=1.2, width=1.2, fontsize=40]
+    leaf22 [label="B", shape="rectangle", style="filled", fillcolor="gold", height=1.2, width=1.2, fontsize=40]
+    
+    root3 [label="", shape="rectangle", style="filled", fillcolor="royalblue", height=0.6, width=0.6]
+    leaf31 [label="A", shape="rectangle", style="filled", fillcolor="gold", height=0.6, width=0.6, fontsize=25]
+    leaf32 [label="B", shape="rectangle", style="filled", fillcolor="gold", height=0.6, width=0.6, fontsize=25]
+    
+    root4 [label="", shape="rectangle", style="filled", fillcolor="royalblue", height=1.7, width=1.7]
+    leaf41 [label="A", shape="rectangle", style="filled", fillcolor="gold", height=1.7, width=1.7, fontsize=55]
+    leaf42 [label="B", shape="rectangle", style="filled", fillcolor="gold", height=1.7, width=1.7, fontsize=55]
+    
+    root5 [label="", shape="rectangle", style="filled", fillcolor="royalblue", height=2.1, width=2.1]
+    leaf51 [label="A", shape="rectangle", style="filled", fillcolor="gold", height=2.1, width=2.1, fontsize=60]
+    leaf52 [label="B", shape="rectangle", style="filled", fillcolor="gold", height=2.1, width=2.1, fontsize=60]
+    
+    root6 [label="", shape="rectangle", style="filled", fillcolor="royalblue", height=1.5, width=1.5]
+    leaf61 [label="A", shape="rectangle", style="filled", fillcolor="gold", height=1.5, width=1.5, fontsize=50]
+    leaf62 [label="B", shape="rectangle", style="filled", fillcolor="gold", height=1.5, width=1.5, fontsize=50]
+
+    root1 -> leaf11
+    root1 -> leaf12
+    root2 -> leaf21
+    root2 -> leaf22
+    root3 -> leaf31
+    root3 -> leaf32
+    root4 -> leaf41
+    root4 -> leaf42
+    root5 -> leaf51
+    root5 -> leaf52
+    root6 -> leaf61
+    root6 -> leaf62
+
+    leaf11 -> root2 [style="invis"]
+    leaf12 -> root2 [style="invis"]
+    leaf21 -> root3 [style="invis"]
+    leaf22 -> root3 [style="invis"]
+
+    leaf41 -> root5 [style="invis"]
+    leaf42 -> root5 [style="invis"]
+    leaf51 -> root6 [style="invis"]
+    leaf52 -> root6 [style="invis"]
+
+    {rank="same"; root1}
+    {rank="same"; leaf11, leaf12}
+    {rank="same"; root2}
+    {rank="same"; leaf21, leaf22}
+    {rank="same"; root3}
+    {rank="same"; leaf31, leaf32}
+
+
+}
