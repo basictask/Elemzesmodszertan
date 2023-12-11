@@ -131,16 +131,16 @@ A bal oldali ábrán egyetlen döntési fa határait látjuk, a jobb oldalin ped
 \end{center}
 \end{frame}
 
-\section{AdaBoost}
+\section{Adaptív turbózás}
 
 \begin{frame}
 \tableofcontents[currentsection]
 \end{frame}
 
-\begin{frame}{AdaBoost}
+\begin{frame}{Adaptív turbózás}
 \begin{columns}
 \begin{column}{.5\textwidth}
-\begin{block}{AdaBoost}
+\begin{block}{Adaptív turbózás}
 Az együttes tanulás súlyozott változata. A modellek szekvenciálisan állnak elő olyan módon, hogy az új modell mindig tanul az elődje hibájából. 
 \end{block}
 \end{column}
@@ -162,10 +162,10 @@ Az együttes tanulás súlyozott változata. A modellek szekvenciálisan állnak
 \end{columns}
 \end{frame}
 
-\begin{frame}{AdaBoost: lépésről lépésre}
+\begin{frame}{Adaptív turbózás: lépésről lépésre}
 \begin{columns}
 \begin{column}{.5\textwidth}
-Az AdaBoost algoritmusa:
+Az Adaptív turbózás algoritmusa:
 \begin{enumerate}
 	\item Az algoritmus minden mintaegyedhez $w=\frac{1}{n}$ kezdeti súlyt rendel, ahol $n$ az összes a minta halmaz mérete.
 	\item Minden $x$ változóra egy döntési tönk kerül illesztésre. Ez egy lineáris döntési határ minden változóra. 
@@ -180,7 +180,7 @@ Az AdaBoost algoritmusa:
 \end{columns}
 \end{frame}
 
-\begin{frame}{AdaBoost: lépésről lépésre}
+\begin{frame}{Adaptív turbózás: lépésről lépésre}
 \begin{columns}
 \begin{column}{.5\textwidth}
 \begin{enumerate}
@@ -207,7 +207,7 @@ Az AdaBoost algoritmusa:
 \end{columns}
 \end{frame}
 
-\begin{frame}{AdaBoost: lépésről lépésre}
+\begin{frame}{Adaptív turbózás: lépésről lépésre}
 \begin{columns}
 \begin{column}{.6\textwidth}
 \begin{enumerate}
@@ -261,7 +261,7 @@ Az egyed abba az osztályba lesz besorolva, amelyikhez tartozó tönkök súlyá
 \end{columns}
 \end{frame}
 
-\begin{frame}{AdaBoost a Moons halmazon}
+\begin{frame}{Adaptív turbózás a Moons halmazon}
 \begin{columns}
 \begin{column}{.5\textwidth}
 A \texttt{make-moons} könyvtár egy nemlineárisan szeparálható adathalmazt generál.\par\medskip
