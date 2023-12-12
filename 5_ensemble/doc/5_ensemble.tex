@@ -283,7 +283,7 @@ A következő ábrán egy döntési fa alapú adaptív turbózó döntési hatá
 
 \begin{frame}{Gradiens turbózás (GBDT)}
 Együttes tanuló algoritmus, amely a rezidumok szekvenciális javításával állítja elő a becsült értéket. Minden újonnan létrejövő modell javít az elődje hibáján.\par\medskip
-A becsült érték előállítása:\par
+\only<1>{A becsült érték előállítása:\par
 \begin{block}{}
 \begin{center}
 \texttt{Becsült érték = előző predikció + tanulási sebesség * rezidum}
@@ -291,7 +291,19 @@ A becsült érték előállítása:\par
 \end{block}
 \begin{center}
 \includegraphics[width=14cm, height=7cm, keepaspectratio]{graphs/ensemble_4.png}
-\end{center}
+\end{center}}
+\only<2>{\begin{algorithm}[H]
+\caption{Gradiens turbózás}
+\SetAlgoLined
+\begin{enumerate}
+	\item Kezdeti predikció a célváltozóra
+	\item Rezidumok kiszámítása
+	\item Döntési fa illesztése a rezidumokra
+	\item Levelek output értékének kiszámítása
+	\item Predikció a minta adathalmazra
+	\item 2-5 lépés iterálása kilépésig
+\end{enumerate}
+\end{algorithm}}
 \end{frame}
 
 \begin{frame}{Gradiens turbózás: lépésről lépésre}
