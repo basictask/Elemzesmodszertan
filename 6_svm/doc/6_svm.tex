@@ -319,6 +319,76 @@ A következő diagramokon másodfokú polinomikus kernellel tanított SVM regres
 
 \section{Az SVM matematikai alapjai}
 
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Az SVM működésének részletei}
+\begin{columns}
+\begin{column}{.5\textwidth}
+Az SVM modellek egy $h$ döntési síkot keresnek a térben amelyre:
+\begin{block}{}
+\vspace{-0.5cm}
+\[
+h = w^Tx + b = w_1x_1 + w_2x_2 + \ldots + w_nx_n
+\]
+\end{block}
+Attól függően, hogy a mintaegyed a hipersík melyik oldalára esik, lesz beosztályozva a $0,1$ osztályok valamelyikébe:
+\begin{block}{}
+\[
+\hat{y} = \begin{cases}
+_{1,}^{0,} & _{ha\;w^{T}x+b\geq0}^{ha\;w^{T}x+b<0}
+\end{cases}
+\]
+\end{block}
+A döntési határ azon pontok halmaza, amelyre $h=0$.
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=6.5cm, keepaspectratio]{images/svm_25.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{A keménymargós SVM célfüggvénye}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A döntési hipersík meredeksége a $w$ vektor normáltja, $\| w \|$. Ez a meredekség fordítottan arányos a margó méretével: nagyobb meredekség szűkebb margót eredményez.\par\smallskip
+A célfüggvény a $\| w \|$ minimalizálására irányul annak érdekében, hogy a margó minél nagyobb legyen:
+\begin{block}{}
+\[
+\underset{w,b}{min} \frac{1}{2} \| w \|^2
+\]
+\end{block}
+A következő megkötésekkel:
+\begin{block}{}
+\vspace{-.2cm}
+\[
+y_i \left( w_i \cdot x_i + b \right) \geq 1 \; \forall i
+\]
+\end{block}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics<1>[width=7cm, keepaspectratio]{images/svm_26.png}
+\includegraphics<2>[width=7cm, keepaspectratio]{images/svm_27.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{A lágymargós SVM tanításának célfüggvénye}
+\begin{columns}
+\begin{column}{.5\textwidth}
+
+\end{column}
+\begin{column}{.5\textwidth}
+
+\end{column}
+\end{columns}
+\end{frame}
+
 \end{document}
 
 
