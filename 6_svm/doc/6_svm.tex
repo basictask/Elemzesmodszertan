@@ -311,7 +311,7 @@ A következő diagramokon másodfokú polinomikus kernellel tanított SVM regres
 \begin{column}{.5\textwidth}
 \begin{center}
 \includegraphics<1>[width=7cm, keepaspectratio]{images/svm_22.png}
-\includegraphics<2>[width=7cm, keepaspectratio]{images/svm_22.png}
+\includegraphics<2>[width=7cm, keepaspectratio]{images/svm_23.png}
 \end{center}
 \end{column}
 \end{columns}
@@ -354,7 +354,7 @@ A döntési határ azon pontok halmaza, amelyre $h=0$.
 \begin{frame}{A keménymargós SVM célfüggvénye}
 \begin{columns}
 \begin{column}{.5\textwidth}
-A döntési hipersík meredeksége a $w$ vektor normáltja, $\| w \|$. Ez a meredekség fordítottan arányos a margó méretével: nagyobb meredekség szűkebb margót eredményez.\par\smallskip
+\textbf{A döntési hipersík meredeksége a $w$ vektor normáltja, $\| w \|$}. Ez a meredekség fordítottan arányos a margó méretével: nagyobb meredekség szűkebb margót eredményez.\par\smallskip
 A célfüggvény a $\| w \|$ minimalizálására irányul annak érdekében, hogy a margó minél nagyobb legyen:
 \begin{block}{}
 \[
@@ -381,10 +381,45 @@ y_i \left( w_i \cdot x_i + b \right) \geq 1 \; \forall i
 \begin{frame}{A lágymargós SVM tanításának célfüggvénye}
 \begin{columns}
 \begin{column}{.5\textwidth}
-
+A lágymargós SVM bevezet egy $\xi > 0$ kiegyenlítő változót amely azt adja meg, hogy egy adott mintaegyed mekkora mértékben sértheti a margót.\par\medskip
+\textbf{Ezáltal két egymással ellentétes cél jön létre a problémában.} Az egyik, hogy a kiegyenlítő változót minimalizálni kell, a másik pedig, hogy az $\frac{1}{2}w^Tw$ kifejezést minimalizálni, hogy a margó a lehető legnagyobb legyen.\par\medskip
+A $C$ hiperparaméter definiálhatóvá teszi az egyensúlyt a két egymással ellentétes cél között. 
 \end{column}
 \begin{column}{.5\textwidth}
+Ennek megfelelően a következő optimalizálási probléma áll elő:
+\begin{block}{}
+\[
+\underset{w,b,\xi}{min} \frac{1}{2}w^Tw + C \sum_{i=1}^n \xi_i
+\]
+\end{block}
+A következő megkötésekkel:
+\begin{block}{}
+\vspace{-.2cm}
+\[
+y_i \left( w_i \cdot x_i + b \right) \geq 1 - \xi \; \forall i
+\]
+\end{block}
+és
+\begin{block}{}
+\vspace{-.2cm}
+\[
+\xi_i > 0 \; \forall i
+\]
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
 
+\begin{frame}{Mercer tézise}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A tézis szerint ha egy kernel $K\left( a,b \right)$ \textbf{folytonos, és argumentumok szerint szimmetrikus}, tehát $K\left( a,b \right) = K\left( b,a \right)$, akkor létezik egy olyan $\varphi$ leképezés, amely $a$-t és $b$-t olyan magasabb dimenziós térbe képezi le,  amelyre igaz, hogy $K\left( a,b \right) = \varphi \left( a \right)^T \varphi \left( b \right)$.\par\medskip
+Ennek megfelelően egy $K$ leképezést lehet használni kernelként, ha $\varphi$ nem is ismert. Elég, ha annyi tudott, hogy $\varphi$ létezik.
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/svm_30.png}
+\end{center}
 \end{column}
 \end{columns}
 \end{frame}
