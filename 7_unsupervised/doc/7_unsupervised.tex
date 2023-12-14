@@ -420,6 +420,23 @@ A DBSCAN egy sűrűség alapú klaszterezési algoritmus, amely már irregulári
 \end{columns}
 \end{frame}
 
+\begin{frame}{Predikció DBSCAN modellel}
+\begin{columns}
+\begin{column}{.5\textwidth}
+Meglepő módon a DBSCAN implementációnak nincs \texttt{predict()} metódusa, ezért \textbf{nem tudja egy új egyedről eldönteni, melyik klaszterhez tartozik}.\par\smallskip
+Ennek az a mögöttes racionalitása, hogy a DBScan által felismert klasztereken kellően egyszerű futtatni egy osztályozó algoritmust, mint a \texttt{KNeighborsClassifier}. Így képes új egyedeket osztályozni.
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics<1>[width=6cm, height=7cm, keepaspectratio]{images/unsupervised_37.png}
+\includegraphics<1>[width=6cm, height=7cm, keepaspectratio]{images/unsupervised_40.png}
+\includegraphics<2>[width=6cm, height=7cm, keepaspectratio]{images/unsupervised_38.png}
+\includegraphics<2>[width=6cm, height=7cm, keepaspectratio]{images/unsupervised_39.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
 \end{document}
 
 
