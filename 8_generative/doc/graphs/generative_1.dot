@@ -1,0 +1,17 @@
+digraph generative {
+    graph [dpi=300]
+    rankdir = "BT"
+
+    PA [label="P(A) = 30%", shape="rectangle"]
+    PB [label="P(B) = 20%", shape="rectangle"]
+    PAandB [label="P(A & B) = 20% * 30% = 6%", shape="rectangle"]
+    PAB [label="P(A | B) = 6% / 20% = 30%", shape="rectangle"]
+    PBA [label="P(B | A) = 6% / 30% = 20%", shape="rectangle"]
+
+    PA -> PAandB
+    PB -> PAandB
+    PAandB -> PBA
+    PAandB -> PAB
+    PA -> PBA
+    PB -> PAB
+}
