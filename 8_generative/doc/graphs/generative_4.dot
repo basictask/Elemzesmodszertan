@@ -1,0 +1,26 @@
+digraph generative {
+    graph [dpi=300]
+    rankdir = "LR"
+
+    weights [label="Súlyok\nParaméterek\n(Φ)", shape="square", width=1.3]
+
+    subgraph cluster_1 {
+        style="dashed"
+        labels [label=<Címkék (z<sub>i</sub>)>, shape="circle"]
+        instances [label=<Egyedek (x<sub>i</sub>)>, shape="circle"]
+    }
+
+    subgraph cluster_2 {
+        style="dashed"
+        label="Gauss eloszlás paraméterek"
+
+        // Use rank=same to put nodes on the same horizontal level
+        means [label="Átlagok\n(μ)", shape="square", width=1.3]
+        covariances [label="Kovariancia\nmátrixok\n(Σ)", shape="square", width=1.3]
+    }
+
+    weights -> labels
+    labels -> instances [splines="curved"]
+    means:e -> instances
+    covariances:e -> instances
+}

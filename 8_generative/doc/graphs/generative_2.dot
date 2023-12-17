@@ -1,0 +1,14 @@
+digraph generative {
+    graph [dpi=300]
+    rankdir = "BT"
+
+    training_data [label="Tanító adatok", shape="rectangle"]
+    model [label="Modell", shape="rectangle"]
+    new_data [label="Új adatok", shape="rectangle"]
+    prediction [label="Becsült érték", shape="rectangle"]
+
+    training_data -> model [label="Tanítás       "]
+    new_data -> model []
+    model -> prediction [label="Predikció"]
+
+}
