@@ -1,0 +1,13 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="TD"
+
+    popular [label="Népszerű\n(Leginkább népszerű tartalom)", width=4.5]
+    semi [label="Félig személyre szabott\n(Csoporttagságok alapján)", width=4.5]
+    personalized [label="Személyre szabott\n(Felhasználási adatok alapján)", width=4.5]
+
+    popular -> semi [dir="both", minlen=2]
+    semi -> personalized [dir="both", minlen=2]
+
+}
+

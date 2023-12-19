@@ -1,0 +1,19 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="LR"
+
+    user [label="Aktív\nfelhasználó", shape="ellipse", style="filled", fillcolor="orange"]
+    another_user [label="Másik\nfelhasználó", shape="ellipse", style="filled", fillcolor="orange"]
+    item [label="Felhasználó által\nértékelt tartalom", shape="ellipse", style="filled", fillcolor="lightblue"]
+    recommend_item [label="Javasolt\ntartalom", shape="ellipse", style="filled", fillcolor="lightblue"]
+
+    user -> another_user [label="Hasonló", minlen=2]
+    another_user -> recommend_item [label="Értékelte            ", minlen=2]
+    user -> item [label="                      Értékelte", minlen=2]
+    item -> recommend_item [label="Hasonló", minlen=2]
+
+    { rank=same; user; item };
+    { rank=same; another_user; recommend_item };
+
+}
+

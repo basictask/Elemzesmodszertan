@@ -1,0 +1,58 @@
+digraph G {
+  node [shape=plaintext]
+  rankdir = "LR"
+  // Define the rating matrix node
+  ratings [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+        <tr><td colspan="7">Értékelési mátrix</td></tr>
+        <tr><td>Felhasználó</td><td>MI</td><td>ST</td><td bgcolor="lightblue">AV</td><td>BH</td><td>SS</td><td>LM</td></tr>
+        <tr><td>u1</td><td>5</td><td>3</td><td bgcolor="darkolivegreen1">?</td><td>2</td><td>2</td><td>2</td></tr>
+        <tr><td>u2</td><td>4</td><td>3</td><td bgcolor="darkolivegreen1">4</td><td>3</td><td>3</td><td>3</td></tr>
+        <tr><td>u3</td><td>5</td><td>2</td><td bgcolor="darkolivegreen1">5</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>u4</td><td>3</td><td>5</td><td bgcolor="darkolivegreen1">3</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>u5</td><td>3</td><td>3</td><td bgcolor="darkolivegreen1">3</td><td>2</td><td>4</td><td>5</td></tr>
+        <tr><td>u6</td><td>2</td><td>3</td><td bgcolor="darkolivegreen1">2</td><td>3</td><td>5</td><td>5</td></tr>
+    </table>
+  >]
+  
+  // Define the similarity node
+  similarity [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+        <tr><td colspan="2">Hasonlóság</td></tr>
+        <tr><td>MI</td><td>0.40</td></tr>
+        <tr><td>ST</td><td>-0.06</td></tr>
+        <tr><td bgcolor="lightblue">AV</td><td bgcolor="lightblue">1</td></tr>
+        <tr><td>BH</td><td>-0.03</td></tr>
+        <tr><td>SS</td><td>-0.60</td></tr>
+        <tr><td>LM</td><td>-0.55</td></tr>
+    </table>
+  >]
+  
+  // Define the neighborhood node
+  neighborhood [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+        <tr><td>Jelöltek</td></tr>
+        <tr><td bgcolor="darkolivegreen1">MI</td></tr>
+        <tr><td bgcolor="darkolivegreen1">BH</td></tr>
+        <tr><td>ST</td></tr>
+        <tr><td>LM</td></tr>
+        <tr><td>SS</td></tr>
+    </table>
+  >]
+  
+  // Define the predicted rating node
+predicted [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+        <tr><td HEIGHT="10">Becsült értékelés<br/><br/></td></tr>
+        <tr><td HEIGHT="10">r<sub>1,av</sub> = 3.25<br/><br/></td></tr>
+    </table>
+>]
+  
+  // Define edges
+  ratings -> similarity [label=" 1. Hasonlóság\nszámítása"]
+  similarity -> neighborhood [label=" 2. Elemek\nrendezése"]
+  neighborhood -> predicted [label=" 3. Értékelés\nbecslése"]
+  
+  // Invisible edge to keep the order of the nodes
+  //ratings -> neighborhood [style=invis]
+}

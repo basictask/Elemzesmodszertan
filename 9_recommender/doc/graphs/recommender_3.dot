@@ -1,0 +1,17 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="BT"
+
+    item_db [label="Elemek halmaza", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+    candidates [label="Jelöltek", style="filled", fillcolor="lightblue"]
+    ranking [label="Rangsorolás", style="filled", fillcolor="lightblue"]
+    items [label="Ajánlatok", style="filled", fillcolor="lightblue"]
+    user_hist [label="Felhasználási adatok", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+
+    item_db -> candidates
+    candidates -> ranking
+    ranking -> items
+    user_hist -> candidates
+    user_hist -> ranking
+}
+

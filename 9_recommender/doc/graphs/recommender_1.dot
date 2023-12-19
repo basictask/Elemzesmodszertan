@@ -1,0 +1,23 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="BT"
+
+    prediction [label="Predikció", width=2, height=.7, style="filled", fillcolor="lightblue"]
+    filtering [label="Szűrés / Rangsorolás", width=2, height=.7, style="filled", fillcolor="lightblue"]
+    recommendation [label="Ajánlat", width=2, height=.7, style="filled", fillcolor="lightblue"]
+
+    hist_data [label="Felhasználási adatok", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+    content_data [label="Tartalmi ismeret", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+    context [label="Kontextus:\l -Eszköz?\l -Mozgásban van?\l -Együtt vagy többen?\l -Milyen nap van?\l", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+    demography [label="Demográfia:\l -Kor\l -Nem\l -Származás\l -Politikai nézetek\l -Társadalmi osztály", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+
+    prediction -> filtering
+    filtering -> recommendation
+
+    hist_data -> prediction
+    content_data -> prediction
+    context -> filtering
+    demography -> filtering
+
+}
+
