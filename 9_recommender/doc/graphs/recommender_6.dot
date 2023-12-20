@@ -1,0 +1,24 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="TD"
+    ranksep=2
+
+    user [label="Felhasználó", shape="rectangle", style="filled", fillcolor="orange"]
+    movie1 [label="Star Wars", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+    movie2 [label="Star Trek", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+    movie3 [label="Blade runner", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+    movie4 [label="Titanic", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+
+    user -> movie1 [label="Kedveli"]
+    user -> movie2 [label="Kedveli"]
+    user -> movie3 [label="Javaslat", style="dotted"]
+
+    movie1 -> movie2 [style="invis", minlen=2]
+    movie2 -> movie3 [style="invis", minlen=2]
+    movie3 -> movie4 [style="invis", minlen=2]
+
+    movie1:s -> movie3:s [style="dashed"]
+    movie2:s -> movie3:s [style="dashed", label="hasonlóság\n\n"]
+
+    { rank="same"; movie1; movie2; movie3; movie4 };
+}

@@ -223,7 +223,7 @@ Ahol:
 \begin{block}{Felhasználók hasonlósága}
 \[
 \text{sim}(u_1, u_2) = \frac{\sum_{i} (nr_{i,u_1} \cdot nr_{i,u_2})}
-{\sqrt{\sum_{i} (nr_{i,u_1})^2} \cdot \sqrt{\sum_{i} (nr_{i,u_2})^2}}
+{\sqrt{\sum_{i} nr_{i,u_1}^2} \cdot \sqrt{\sum_{i} nr_{i,u_2}^2}}
 \]
 Ahol:
 \begin{itemize}
@@ -258,15 +258,15 @@ Az ajánlásokhoz érdemes a hasonlóságokat előzetesen kiszámolni, hogy csö
 Adott az alábbi értékelési mátrix 6 filmmel és 6 felhasználóval. A cél megbecsülni a táblázat hiányzó értékeit. Első lépésben el kell menteni, melyik filmeket látták még azok a felhasználók, amelyek egy adott filmet megnéztek:
 \begin{columns}
 \begin{column}{.3\textwidth}
-\begin{small}
+\begin{footnotesize}
 \vspace{.5cm}\\
-$MIB: \left[ ST,B,SS,LM,AV \right]$\\
-$ST: \left[ MIB, B, SS, LM, AV \right]$\\
-$B: \left[ MIB, ST, SS, LM, AV \right]$\\
-$SS: \left[ MIB, ST, B, LM, AV \right]$\\
-$LM: \left[ MIB, ST, SS, B, AV \right]$\\
-$AV: \left[ MIB, ST, B, SS, LM \right]$\\
-\end{small}
+\only<2>{$MIB: \left[ ST,B,SS,LM,AV \right]$\\ \medskip
+$ST: \left[ MIB, B, SS, LM, AV \right]$\\ \medskip
+$B: \left[ MIB, ST, SS, LM, AV \right]$\\ \medskip
+$SS: \left[ MIB, ST, B, LM, AV \right]$\\ \medskip
+$LM: \left[ MIB, ST, SS, B, AV \right]$\\ \medskip
+$AV: \left[ MIB, ST, B, SS, LM \right]$\\}
+\end{footnotesize}
 \end{column}
 \begin{column}{.8\textwidth}
 \begin{center}
@@ -373,8 +373,50 @@ LM  & $-0.83$ & $-0.62$ & $-0.83$ & $-0.32$ & $0.96$ & $1$ \\
 \begin{frame}{Tartalom alapú rendszerek}
 \begin{columns}
 \begin{column}{.5\textwidth}
-A kollaboratív szűrőkkel ellentétben a tartalom alapú szűrőknek nincs szükségi információra múltbeli vásárlásokról és információról. Ehelyett a javaslatokat a felhasználók profiljai és a termékek metaadatai alapján állítják össze.\par\smallskip
+A kollaboratív szűrőkkel ellentétben a tartalom alapú szűrőknek nincs szükségi információra múltbeli vásárlásokról és információról.\par\medskip
+Ehelyett a javaslatokat \textbf{a felhasználók profiljai és a termékek metaadatai alapján állítják össze}.\par\medskip
 A tartalom alapú rendszerek viszont nem használják ki a közösség adta lehetőségeket.
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/recommender_6.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Tartalom alapú rendszerek csővezetéke}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A tartalom alapú rendszerek esetén a rendszer úgy tesz ajánlásokat, hogy a felhasználó által fogyasztott tartalmakhoz hasonló elemeket mutat neki ajánlásként.\par\smallskip
+Az objektumokhoz tartozó két fontos tartalmi leíró elem a \textbf{tag} és a \textbf{fact}.\par\smallskip
+\begin{block}{Tag}
+A Web2.0 idején megjelent weboldal tartalomra utaló kulcsszavak.
+\end{block}
+\begin{block}{Fact}
+Tényszerűen írja le az adott elemet.
+\end{block}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/recommender_7.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Tartalomalapú rendszerek komponensei}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\only<1>{\begin{block}{Tartalomelemző}
+A tartalom alapján készít modelleket az elérhető elemekről.
+\end{block}}
+\only<2>{\begin{block}{Felhasználó profilozó}
+Felhasználói profilokat készít. Ez gyakran egy egyszerű lista azokról az elemekről, amiket a felhasználó fogyasztott.
+\end{block}}
+\only<3>{\begin{block}{Elem visszakereső}
+Célja megkeresni a releváns tartalmakat azáltal, hogy a felhasználói profilokat összehasonlítja az elemek modelljeivel.
+\end{block}}
 \end{column}
 \begin{column}{.5\textwidth}
 

@@ -1,0 +1,13 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="BT"
+
+    i_like_ex_machina [label="Tetszik nekem\naz Ex Machina"]
+    categs [label="1. Akció\l2. Őrült robotok\l3. Sci-fi\l", shape="rectangle"]
+    lookup [label="Star Wars (1, 3)\lTerminátor (1, 2, 3)\lDrágán add az életed (1)\l", shape="rectangle"]
+    recommendations [label="Javaslatok:\l - Terminátor ***\l - Star Wars **\l - Drágán add az életed *", shape="rectangle"]
+
+    i_like_ex_machina -> categs [label="Az Ex Machina\nkategóriáinak keresése"]
+    categs -> lookup [label="Filmek keresése\na kategóriákban"]
+    lookup -> recommendations [label="Relevancia szerinti\nrendezés"]
+}
