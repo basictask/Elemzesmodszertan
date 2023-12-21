@@ -1,0 +1,48 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="LR"
+    splines="false"
+    
+    subgraph cluster_1 {
+        label="Kevert hibrid ajánló"
+        style="dashed"
+        
+        personalized [label="Leginkább\nszemélyreszabott ajánló", shape="rectangle", ]
+        semi_personalized [label="Félig személyreszabott\najánló", shape="rectangle", ]
+        popular [label="Leginkább\nnépszerű ajánló", shape="rectangle", ]
+
+        {rank="same"; personalized; semi_personalized; popular}
+    }
+
+    input [label="Input", shape="rectangle"]
+
+    subgraph cluster_2 {
+        style="dotted"
+        rec21 [label="1. javaslat", shape="rectangle"]
+        rec22 [label="2. javaslat", shape="rectangle"]
+    }
+    subgraph cluster_3 {
+        style="dotted"
+        rec31 [label="1. javaslat", shape="rectangle"]
+        rec32 [label="2. javaslat", shape="rectangle"]
+    }
+    subgraph cluster_4 {
+        style="dotted"
+        rec41 [label="1. javaslat", shape="rectangle"]
+        rec42 [label="2. javaslat", shape="rectangle"]
+    }
+
+    input -> personalized:w
+    input -> semi_personalized:w
+    input -> popular:w
+
+    personalized -> semi_personalized [minlen=4, style="invis"]
+    semi_personalized -> popular [minlen=4, style="invis"]
+
+    personalized:e -> rec21:w
+    personalized:e -> rec22:w
+    semi_personalized:e -> rec31:w
+    semi_personalized:e -> rec32:w
+    popular:e -> rec41:w
+    popular:e -> rec42:w
+}

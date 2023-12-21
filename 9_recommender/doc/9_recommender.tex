@@ -127,7 +127,7 @@ A népszerűségen alapuló ajánlatoknak nincs szüksége felhasználási adato
 \begin{columns}
 \begin{column}{.5\textwidth}
 Adott egy $m$ felhasználóból és $n$ termékből álló $X$ mátrix. $X\left[ u,i \right]$ azt jelöli, hogy $u$ felhasználó hogyan értékelte $i$ terméket.\par\medskip
-A feladat megbecsülni a mátrix hiányzó értékeit a termékekről és felhasználókról rendelkezésre álló információ alapján.\par\medskip
+A feladat \textbf{megbecsülni a mátrix hiányzó értékeit} a termékekről és felhasználókról rendelkezésre álló információ alapján.\par\medskip
 Ez a mátrix leggyakrabban egy ritka mátrix: nagyon sok az ismeretlen érték.
 \end{column}
 \begin{column}{.5\textwidth}
@@ -136,19 +136,19 @@ Ez a mátrix leggyakrabban egy ritka mátrix: nagyon sok az ismeretlen érték.
 \hline
 & $i_1$ & $i_2$ & $i_3$ & $i_4$ & $i_5$ & $i_6$ \\
 \hline
-$u_1$ & $4$ & $?$ & $3$ & $?$ & $5$ & $?$ \\
+$u_1$ & $4$ & \textcolor{red}{$?$} & $3$ & \textcolor{red}{$?$} & $5$ & \textcolor{red}{$?$} \\
 \hline
-$u_2$ & $?$ & $2$ & $?$ & $?$ & $4$ & $1$ \\
+$u_2$ & \textcolor{red}{$?$} & $2$ & \textcolor{red}{$?$} & \textcolor{red}{$?$} & $4$ & $1$ \\
 \hline
-$u_3$ & $?$ & $?$ & $1$ & $?$ & $2$ & $5$ \\
+$u_3$ & \textcolor{red}{$?$} & \textcolor{red}{$?$} & $1$ & \textcolor{red}{$?$} & $2$ & $5$ \\
 \hline
-$u_4$ & $?$ & $?$ & $3$ & $?$ & $?$ & $1$ \\
+$u_4$ & \textcolor{red}{$?$} & \textcolor{red}{$?$} & $3$ & \textcolor{red}{$?$} & \textcolor{red}{$?$} & $1$ \\
 \hline
-$u_5$ & $1$ & $4$ & $?$ & $?$ & $2$ & $5$ \\
+$u_5$ & $1$ & $4$ & \textcolor{red}{$?$} & \textcolor{red}{$?$} & $2$ & $5$ \\
 \hline
-$u_6$ & $5$ & $?$ & $2$ & $1$ & $?$ & $4$ \\
+$u_6$ & $5$ & \textcolor{red}{$?$} & $2$ & $1$ & \textcolor{red}{$?$} & $4$ \\
 \hline
-$u_7$ & $?$ & $2$ & $3$ & $?$ & $4$ & $5$ \\
+$u_7$ & \textcolor{red}{$?$} & $2$ & $3$ & \textcolor{red}{$?$} & $4$ & $5$ \\
 \hline
 \end{tabular}
 \end{center}
@@ -159,7 +159,7 @@ $u_7$ & $?$ & $2$ & $3$ & $?$ & $4$ & $5$ \\
 \begin{frame}{A rangsorolási probléma}
 \begin{columns}
 \begin{column}{.5\textwidth}
-A rangsorolási probléma a predikciós problémának egy intuitívabb megfogalmazása.\par\smallskip
+A rangsorolási probléma \textbf{a predikciós problémának egy intuitívabb megfogalmazása}.\par\smallskip
 Ha adott $n$ elem halmaza, a rangsorolás célja megkülönböztetni a leginkább javasolható $k$ elemet, amit ajánlhat a felhasználónak valamilyen rendezési kritérium alapján.\par\smallskip
 A predikciós probléma gyakran rangsorolási problémához vezet vissza.
 \end{column}
@@ -198,7 +198,7 @@ Két típusa létezik:
 \end{frame}
 
 \begin{frame}{Termék alapú kollaboratív szűrő eljárása}
-A példában a cél $u_1$ felhasználó értékelésének megbecsülése az AV filmhez. Ehhez tartozóan  az eljárás először kiszámítja az AV film hasonlóságát az összes többivel, majd ezeket rangsorolja és a leghasonlóbb elemek értékelései alapján megadja annak becsült értékelését.\par\medskip
+A példában a cél $u_1$ felhasználó értékelésének megbecsülése az AV filmhez. Ehhez tartozóan  az eljárás először kiszámítja \textbf{az AV film hasonlóságát az összes többivel, majd ezeket rangsorolja} és a leghasonlóbb elemek értékelései alapján megadja annak becsült értékelését.\par\medskip
 \begin{center}
 \includegraphics[width=14cm, height=7cm, keepaspectratio]{graphs/recommender_5.png}
 \end{center}
@@ -256,16 +256,45 @@ Az ajánlásokhoz érdemes a hasonlóságokat előzetesen kiszámolni, hogy csö
 
 \begin{frame}{Példa: hasonlósági tábla összeállítása}
 Adott az alábbi értékelési mátrix 6 filmmel és 6 felhasználóval. A cél megbecsülni a táblázat hiányzó értékeit. Első lépésben el kell menteni, melyik filmeket látták még azok a felhasználók, amelyek egy adott filmet megnéztek:
+\only<1>{
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+& 
+\includegraphics[height=1.5cm, keepaspectratio]{images/movies/men_in_black.png} &
+\includegraphics[height=1.5cm, keepaspectratio]{images/movies/star_trek.png} &
+\includegraphics[height=1.5cm, keepaspectratio]{images/movies/ace_ventura.png} &
+\includegraphics[height=1.5cm, keepaspectratio]{images/movies/braveheart.png} &
+\includegraphics[height=1.5cm, keepaspectratio]{images/movies/sense_and_sensibility.png} &
+\includegraphics[height=1.5cm, keepaspectratio]{images/movies/les_miserables.png} \\
+\hline
+\textbf{Név} & MIB & ST & AV & B & SS & LM\\ 
+\hline
+Sara & $2.20$ & $0.20$ & \textcolor{red}{$?$} & $-0.80$ & $-0.80$ & $-0.80$\\ 
+\hline
+Jesper & $0.60$ & $-0.40$ & $0.60$ & \textcolor{red}{$?$} & $-0.40$ & $-0.40$\\ 
+\hline
+Therese & $2.33$ & $-0.67$ & $2.33$ & $-0.67$ & $-1.67$ & $-1.67$\\ 
+\hline
+Helle & $0.40$ & $2.40$ & $0.40$ & \textcolor{red}{$?$} & $-1.60$ & $-1.60$\\ 
+\hline
+Pietro & $-0.33$ & $-0.33$ & $-0.33$ & $-1.33$ & $0.67$ & $1.67$\\ 
+\hline
+Ekaterina & $-1.33$ & $-0.33$ & $-1.33$ & $0.33$ & $1.67$ & $1.67$\\ 
+\hline
+\end{tabular}
+\end{center}}
+\only<2>{
 \begin{columns}
 \begin{column}{.3\textwidth}
 \begin{footnotesize}
 \vspace{.5cm}\\
-\only<2>{$MIB: \left[ ST,B,SS,LM,AV \right]$\\ \medskip
+$MIB: \left[ ST,B,SS,LM,AV \right]$\\ \medskip
 $ST: \left[ MIB, B, SS, LM, AV \right]$\\ \medskip
 $B: \left[ MIB, ST, SS, LM, AV \right]$\\ \medskip
 $SS: \left[ MIB, ST, B, LM, AV \right]$\\ \medskip
 $LM: \left[ MIB, ST, SS, B, AV \right]$\\ \medskip
-$AV: \left[ MIB, ST, B, SS, LM \right]$\\}
+$AV: \left[ MIB, ST, B, SS, LM \right]$\\
 \end{footnotesize}
 \end{column}
 \begin{column}{.8\textwidth}
@@ -283,13 +312,13 @@ $AV: \left[ MIB, ST, B, SS, LM \right]$\\}
 \hline
 \textbf{Név} & MIB & ST & AV & B & SS & LM\\ 
 \hline
-Sara & $2.20$ & $0.20$ & ? & $-0.80$ & $-0.80$ & $-0.80$\\ 
+Sara & $2.20$ & $0.20$ & \textcolor{red}{$?$} & $-0.80$ & $-0.80$ & $-0.80$\\ 
 \hline
-Jesper & $0.60$ & $-0.40$ & $0.60$ & ? & $-0.40$ & $-0.40$\\ 
+Jesper & $0.60$ & $-0.40$ & $0.60$ & \textcolor{red}{$?$} & $-0.40$ & $-0.40$\\ 
 \hline
 Therese & $2.33$ & $-0.67$ & $2.33$ & $-0.67$ & $-1.67$ & $-1.67$\\ 
 \hline
-Helle & $0.40$ & $2.40$ & $0.40$ & ? & $-1.60$ & $-1.60$\\ 
+Helle & $0.40$ & $2.40$ & $0.40$ & \textcolor{red}{$?$} & $-1.60$ & $-1.60$\\ 
 \hline
 Pietro & $-0.33$ & $-0.33$ & $-0.33$ & $-1.33$ & $0.67$ & $1.67$\\ 
 \hline
@@ -299,7 +328,7 @@ Ekaterina & $-1.33$ & $-0.33$ & $-1.33$ & $0.33$ & $1.67$ & $1.67$\\
 \end{footnotesize}
 \end{center}
 \end{column}
-\end{columns}
+\end{columns}}
 \end{frame}
 
 \begin{frame}{Normalizált értékelési tábla}
@@ -317,13 +346,13 @@ Az értékelési tábla és az adott felhasználó értékelései szerint felír
 \hline
 \textbf{Név} & MIB & ST & AV & B & SS & LM\\ 
 \hline
-Sara & $2.20$ & $0.20$ & $?$ & $-0.80$ & $-0.80$ & $-0.80$ \\
+Sara & $2.20$ & $0.20$ & \textcolor{red}{$?$} & $-0.80$ & $-0.80$ & $-0.80$ \\
 \hline
-Jesper & $0.60$ & $-0.40$ & $0.60$ & $?$ & $-0.40$ & $-0.40$ \\
+Jesper & $0.60$ & $-0.40$ & $0.60$ & \textcolor{red}{$?$} & $-0.40$ & $-0.40$ \\
 \hline
 Therese & $2.33$ & $-0.67$ & $2.33$ & $-0.67$ & $-1.67$ & $-1.67$ \\
 \hline
-Helle & $0.40$ & $2.40$ & $0.40$ & $?$ & $-1.60$ & $-1.60$ \\
+Helle & $0.40$ & $2.40$ & $0.40$ & \textcolor{red}{$?$} & $-1.60$ & $-1.60$ \\
 \hline
 Pietro & $-0.33$ & $-0.33$ & $-0.33$ & $-1.33$ & $0.67$ & $1.67$ \\
 \hline
@@ -414,12 +443,145 @@ A tartalom alapján készít modelleket az elérhető elemekről.
 \only<2>{\begin{block}{Felhasználó profilozó}
 Felhasználói profilokat készít. Ez gyakran egy egyszerű lista azokról az elemekről, amiket a felhasználó fogyasztott.
 \end{block}}
-\only<3>{\begin{block}{Elem visszakereső}
+\only<3->{\begin{block}{Elem visszakereső}
 Célja megkeresni a releváns tartalmakat azáltal, hogy a felhasználói profilokat összehasonlítja az elemek modelljeivel.
 \end{block}}
 \end{column}
 \begin{column}{.5\textwidth}
+\only<-3>{\begin{center}
+Tartalomalapú rendszerek tanítása\par
+\begin{center}
+\includegraphics[width=6cm, height=7cm, keepaspectratio]{graphs/recommender_8.png}
+\end{center}
+\end{center}}
+\only<4>{\begin{center}
+Predikció tartalomalapú rendszerek esetén\par
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/recommender_9.png}
+\end{center}
+\end{center}}
+\end{column}
+\end{columns}
+\end{frame}
 
+\section{Tudásalapú rendszerek}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Tudásalapú rendszerek}
+\begin{columns}
+\begin{column}{.5\textwidth}
+Azon tételek esetén használatos, amelyeket a felhasználók ritkán vásárolnak, és ezért nagyon specifikus igényeik lehetnek az elemekkel kapcsolatban. Pl.: ingatlanok, magas értékű elektromos cikkek.\par\smallskip
+A kereséshez a rendszerben a felhasználónak meg kell adnia \textbf{az elvárt paramétereket, és a rendszer visszatéríti azokat az egyedeket, amelyekre jellemzőek ezek a feltételek}.\par\smallskip
+Hátránya, hogy sosem fog váratlan, újszerű eredményeket visszatéríteni. 
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=6cm, keepaspectratio]{images/recommender_3.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Hibrid ajánlók}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Az ajánló rendszerek megközelítései}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\only<1>{Minden ajánló rendszer típusnak megvannak a maga előnyei és hátrányai.\par\medskip
+A hibrid rendszerek \textbf{célja adott komponensek pozitív hozadékainak megtartása, míg a negatív tulajdonságainak ellensúlyozása más rendszerek előnyei által}.\par\medskip
+A hibrid rendszerek három fő típusa:
+\begin{itemize}
+	\item Monolitikus
+	\item Együttes
+	\item Kevert
+\end{itemize}}
+\only<2>{\begin{block}{Hidegindítási probléma}
+A hidegindítási probléma az ajánló rendszerekben akkor jelentkezik, amikor az új felhasználók vagy új elemek \textbf{nem rendelkeznek elegendő interakciós adattal ahhoz, hogy az ajánló algoritmusok hatékonyan dolgozhassanak}.\par\smallskip
+Hidegindítási problémától szenvedő ajánló típusok:
+\begin{itemize}
+	\item Kollaboratív szűrők
+	\item Demográfiaalapú rendszerek
+\end{itemize}
+\end{block}}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/recommender_10.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hibrid ajánlók: monolitikus rendszerek}
+\begin{columns}
+\begin{column}{.5\textwidth}
+Egy ajánló rendszer általánosságban több komponenst tartalmaz adott feladatok elvégzésére, mint a hasonlóság számító, elemkiválasztó.\par\smallskip
+Egy monolitikus ajánló \textbf{különböző rendszerek komponenseit használja fel egy csővezetékbe építve}.\par\smallskip
+Például: tartalomalapú adatok keverése viselkedéshez köthető javaslatokkal.
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/recommender_11.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hibrid ajánlók: kevert rendszerek}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A kevert hibrid rendszerek \textbf{szigetszerűen működő ajánló rendszerek predikcióinak unióját térítik vissza}.\par\smallskip
+Az ajánló rendszerek szigetei terjedhetnek például a leginkább személyreszabottól a legnépszerűbbig. Gyakran a személyreszabott rendszerek 1-2 predikciót adnak, míg a népszerű elemeket célzó rendszerek sokkal többet.\par\smallskip
+A rendszerek által adott predikciókat normalizálva lehetséges a fontossági lista előállítása. 
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/recommender_12.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hibrid ajánlók: együttes rendszerek}
+\begin{columns}
+\begin{column}{.5\textwidth}
+Ahogy az együttes tanulás esetében, úgy az \textbf{együttes ajánló rendszerek is több különböző rendszer predikciói aggregálják a végleges predikció létrehozásához}. Az aggregáció történhet különböző módszerekkel, mint a szavazás, súlyozás kapcsolás.\par\smallskip
+A példában $R_1$ predikciói $\left[ 1,5,6 \right]$, $R_2$ predikciói pedig $\left[  6,5,3\right]$. Ebben az esetben a végső predikció $\left[ 5,6,1 \right]$ lesz az aggregálás után.
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/recommender_13.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hibrid ajánlók: kapcsolt rendszerek}
+A kapcsolt ajánló rendszerek valamilyen \textbf{feltétel szerint választanak adott modellek predikciói közül}. Ebben a példában a feltétel, hogy mennyi terméket értékelt a felhasználó.\par\smallskip
+Ennek az intuíciója, hogy aki keveset értékelt, annak a vásárlói kosara több releváns információt tartalmazhat.
+\begin{center}
+\includegraphics[width=12cm, height=7cm, keepaspectratio]{graphs/recommender_14.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Hibrid ajánlók: súlyozott rendszerek}
+\begin{columns}
+\begin{column}{.5\textwidth}
+Különböző rendszerek adottságait \textbf{súlyozás segítségével is fel lehet használni} együttesen.\par\smallskip
+\textbf{A tartalomalapú rendszer nem tesz különbséget jó és rossz minőség között, míg a kollaboratív szűrés nem tesz különbséget fontosságban}.\par\smallskip
+A súlyozott rendszerek a komponenseik predikcióit valamilyen súlyozás szerint veszik figyelembe, ennek alapján áll elő a végső predikció. 
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/recommender_15.png}
+\end{center}
 \end{column}
 \end{columns}
 \end{frame}

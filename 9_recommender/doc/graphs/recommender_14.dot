@@ -1,0 +1,24 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="LR"
+    splines="false"
+
+    subgraph cluster_1 {
+        label="Kapcsolt ajánló"
+        style="dashed"
+        basket [label="Vásárlói kosár elemző\najánló rendszer", shape="rectangle"]
+        collab [label="Kollaboratív szűrő\najánló rendszer", shape="rectangle"]
+        hybrid [label="Hibrid\najánló", shape="rectangle"]
+    }
+
+    input [label="Input", shape="rectangle"]
+    output [label="Output", shape="rectangle"]
+
+    input -> basket:w
+    input -> collab:w
+
+    basket:e -> hybrid [label="Ha |értékelések(u)| < 20"]
+    collab:e -> hybrid [label="Ha |értékelések(u)| >= 20"]
+
+    hybrid -> output
+}

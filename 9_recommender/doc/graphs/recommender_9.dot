@@ -1,0 +1,13 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="BT"
+
+    user [label="Felhasználó", style="filled", fillcolor="orange"]
+    db [label="Profil-\nadatbázis", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+    website [label="Weboldal", shape="rectangle", style="filled", fillcolor="lightgray"]
+    model [label="Gépi tanulás\nmodell", shape="box3d", style="filled", fillcolor="lightblue"]
+
+    user -> website [label="1. A felhasználó megérkezik\na weboldalra"]
+    db -> model [label="2. A felhasználó\nprofilja\nlekérdeződik"]
+    model -> website [label="3. A tanított\nmodell releváns\njavaslatokat állít elő"]
+}

@@ -1,0 +1,28 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="BT"
+    splines="false"
+
+    input [label="Input", shape="rectangle"]
+    output [label="Output", shape="rectangle"]
+
+    subgraph cluster_1 {
+        style="dashed"
+        label="Súlyozott ajánló"
+        collab [label="Kollaboratív szűrő", shape="rectangle"]
+        content [label="Tartalomalapú ajánló", shape="rectangle"]
+        buffer_point [label="", shape="circle", width=0, height=0]
+
+        { rank=same; collab; content }
+    }
+
+    input -> collab
+    input -> content
+
+    collab:s -> content:n [minlen=2, style="invis"]
+
+    collab -> buffer_point [label=<r<sub>cf</sub>>]
+    content -> buffer_point [label=<   r<sub>cb</sub> >]
+
+    buffer_point -> output [label=<  r<sub>hybrid</sub>=r<sub>cf</sub> * 0.6 + r<sub>cb</sub> * 0.4>]
+}

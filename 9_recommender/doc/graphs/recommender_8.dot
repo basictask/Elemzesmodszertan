@@ -1,0 +1,16 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="BT"
+
+    user [label="Felhasználó", style="filled", fillcolor="orange"]
+    content [label="Tartalom", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+    profiler [label="Profilozó", shape="rectangle", style="filled", fillcolor="lightgrey"]
+    analyzer [label="Tartalom\nelemző", shape="rectangle", style="filled", fillcolor="lightgrey"]
+    model [label="Gépi tanulás\nmodell", shape="box3d", style="filled", fillcolor="lightblue"]
+
+    user -> profiler [label="2. A felhasználó\linterakcióba lép\la felülettel"]
+    content -> profiler
+    content -> analyzer [label="\l\l\l1. A tartalomelemző\lfeldolgozza az elemek\ltartalomra vonatkozó adatait"]
+    profiler -> model [minlen=2]
+    analyzer -> model [minlen=2]
+}

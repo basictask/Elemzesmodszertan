@@ -1,0 +1,43 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="BT"
+    ranksep=1
+
+    subgraph cluster_1 {
+
+        subgraph cluster_11 {
+            style="dashed"
+            label="1. Ajánló rendszer"
+            similarity1 [label="Elemhasonlóság\nszámítás", shape="rectangle", style="filled", fillcolor="lightblue"]
+            selection1 [label="Jelöltek\nkiválasztása", shape="rectangle", style="filled", fillcolor="orange"]
+            prediction1 [label="Értékelés\nbecslése", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+
+            {rank="same"; similarity1; selection1; prediction1}
+        }
+
+        subgraph cluster_12 {
+            style="dashed"
+            label="2. Ajánló rendszer"
+            labelloc="bottom"
+            similarity2 [label="Elemhasonlóság\nszámítás", shape="rectangle", style="filled", fillcolor="lightblue"]
+            selection2 [label="Jelöltek\nkiválasztása", shape="rectangle", style="filled", fillcolor="orange"]
+            prediction2 [label="Értékelés\nbecslése", shape="rectangle", style="filled", fillcolor="darkolivegreen1"]
+
+            {rank="same"; similarity2; selection2; prediction2}
+        }
+    }
+
+    input [label="Input", shape="rectangle"]
+    recs [label="Ajánlások", shape="rectangle"]
+
+    similarity2 -> selection2 [style="invis", minlen=2]
+
+    similarity1 -> selection1 [style="invis", minlen=2]
+    selection1 -> prediction1 [style="invis", minlen=2]
+
+    input -> similarity1
+    similarity1 -> selection2 
+    selection2 -> prediction2 [minlen=2]
+
+    prediction2 -> recs
+}

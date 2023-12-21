@@ -1,0 +1,23 @@
+digraph recommender {
+    graph [dpi=300]
+    rankdir="LR"
+
+    domain [label="Szakterületi\ntudás", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+    content [label="Tartalmi\nmetaadatok", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+    behavior [label="Viselkedési\nmetrika", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+    demography [label="Demográfiai\nadatok", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+    context [label="Kontextus", shape="cylinder", style="filled", fillcolor="darkolivegreen1"]
+
+    knowledge_recommender [label="Tudásalapú\najánló", shape="rectangle", style="filled", fillcolor="lightblue"]
+    content_recommender [label="Tartalomalapú\najánló", shape="rectangle", style="filled", fillcolor="lightblue"]
+    collab_recommender [label="Kollaboratív\nszűrő", shape="rectangle", style="filled", fillcolor="lightblue"]
+    demographic_recommender [label="Demográfia alapú\najánló", shape="rectangle", style="filled", fillcolor="lightblue"]
+
+    domain -> knowledge_recommender
+    content -> content_recommender
+    behavior -> content_recommender
+    behavior -> collab_recommender
+    demography -> demographic_recommender
+    context -> knowledge_recommender
+    context -> collab_recommender
+}
