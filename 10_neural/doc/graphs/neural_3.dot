@@ -1,0 +1,15 @@
+digraph neural_network {
+    graph [dpi=300]
+    rankdir=BT; // Left to right layout
+
+    A [label="A", shape="circle", style="filled", fillcolor="lightblue"]
+    B [label="B", shape="circle", style="filled", fillcolor="lightblue"]
+    C [label="C", shape="circle", style="filled", fillcolor="lightblue"]
+
+    buffer_2 [label="", shape="plaintext", width=0, height=0, ]
+
+    C -> buffer_2
+    A -> C
+    B -> C
+
+}

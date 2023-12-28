@@ -1,0 +1,37 @@
+digraph neural_network {
+    graph [dpi=300]
+    rankdir=LR; // Left to right layout
+    splines=false
+    
+    input1 [label=<x<sub>1</sub>>, shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
+    input2 [label=<x<sub>2</sub>>, shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
+    input3 [label=<x<sub>3</sub>>, shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
+    
+    output1 [label="Σ φ", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
+    output2 [label="Σ φ", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
+    output3 [label="Σ φ", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
+    output4 [label="Σ φ", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
+
+    buffer1 [label="", shape="plaintext", width=0]    
+    buffer2 [label="", shape="plaintext", width=0]
+    buffer3 [label="", shape="plaintext", width=0]
+    buffer4 [label="", shape="plaintext", width=0]
+
+    input1 -> output1
+    input2 -> output1
+    input3 -> output1
+    input2 -> output2
+    input3 -> output2
+    input1 -> output2
+    input1 -> output3
+    input2 -> output3
+    input3 -> output3
+    input1 -> output4
+    input2 -> output4
+    input3 -> output4
+
+    output1 -> buffer1 [minlen=.1]
+    output2 -> buffer2 [minlen=.1]
+    output3 -> buffer3 [minlen=.1]
+    output4 -> buffer4 [minlen=.1]
+}

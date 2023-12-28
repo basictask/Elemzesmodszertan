@@ -1,0 +1,28 @@
+digraph neural_network {
+    graph [dpi=300]
+    rankdir=BT; // Left to right layout
+
+    x1 [label=<x<sub>1</sub>>, shape="plaintext"]
+    x2 [label=<x<sub>2</sub>>, shape="plaintext"]
+    x3 [label=<x<sub>3</sub>>, shape="plaintext"]
+
+    w1 [label=<w<sub>1</sub>>, shape="circle", style="filled", fillcolor="darkolivegreen1"]
+    w2 [label=<w<sub>2</sub>>, shape="circle", style="filled", fillcolor="darkolivegreen1"]
+    w3 [label=<w<sub>3</sub>>, shape="circle", style="filled", fillcolor="darkolivegreen1"]
+
+    sum [label="Σ", shape="circle", style="filled", fillcolor="lightblue", width=.8, fontsize=25]
+    activation [label="φ", shape="circle", style="filled", fillcolor="lightblue", width=.8, fontsize=25]
+    buffer_node [label="", shape="plaintext", width=0]
+
+    x1 -> w1
+    x2 -> w2
+    x3 -> w3
+
+    w1 -> sum
+    w2 -> sum
+    w3 -> sum
+
+    sum -> activation 
+
+    activation -> buffer_node
+}
