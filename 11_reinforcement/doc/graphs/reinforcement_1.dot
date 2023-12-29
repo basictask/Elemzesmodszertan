@@ -1,0 +1,10 @@
+digraph reinforcement {
+    graph [dpi=300]
+    rankdir="LR"
+
+    agent [label="Ügynök", shape="rectangle"]
+    env [label="Környezet", shape="box3d"]
+
+    agent -> env [label="Becsült címke"]
+    env -> agent [label="\nValós címke"]
+}
