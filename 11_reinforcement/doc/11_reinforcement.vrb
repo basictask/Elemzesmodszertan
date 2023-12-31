@@ -1,0 +1,17 @@
+\frametitle{Egy egyszerű kezdeti politika}
+Az első egy keménykódolt politika: \textbf{olyan statikus szabályrendszer, amelyet nem gépi tanulás segítségével ismer meg az ügynök, hanem egy determinisztikus program vezérli}:
+\begin{small}
+\begin{center}
+\begin{lstlisting}
+for episode in range(n_episodes):
+	for step in range(n_steps):
+		if obs.theta < 0:
+			action = 0
+		else:
+			action = 1
+		obs, reward = env.step(action)
+\end{lstlisting}
+\end{center}
+\end{small}
+A politika szerint ha a $\theta$ oszlop dőlési szöge kevesebb, mint $0$, a kocsit balra tolja, egyébként jobbra.\par\smallskip
+Az \texttt{env.step(action)} függvény segítségével hajtja végre az ügynök a választott cselekvését, majd a környezet visszaadja neki a jutalmat és a következő állapotot.

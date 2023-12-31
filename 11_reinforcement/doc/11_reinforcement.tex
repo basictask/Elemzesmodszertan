@@ -3,6 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{tabularx}
+\usepackage{listings}
 \usepackage{babel}
 \usepackage[ruled,vlined]{algorithm2e}
 \SetAlgorithmName{Algoritmus}{algoritmus}{List of Algorithms}
@@ -38,6 +39,15 @@
 \setbeamercolor{structure}{fg=DarkerRed} % Changes basic structural elements to Darker Red
 \setbeamercolor{title in head/foot}{bg=DarkerRed} % Changes the title in header/footer to Darker Red
 
+\lstset{
+  language=Python,                 % choose the language of the code
+  basicstyle=\ttfamily\small,      % the size of the fonts used for the code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{red},         % string literal style
+  commentstyle=\color{green},      % comment style
+  morecomment=[l][\color{magenta}]{\#},
+  tabsize=4
+}
 
 \begin{document}
 
@@ -118,6 +128,204 @@ A két szemléletmód abban különbözik, hogy a felügyelő milyen visszajelz�
 \begin{center}
 \includegraphics<1>[width=7cm, height=7cm, keepaspectratio]{graphs/reinforcement_1.png}
 \includegraphics<2>[width=7cm, height=7cm, keepaspectratio]{graphs/reinforcement_2.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{A megerősítéses tanulás komponensei}
+\begin{columns}
+\begin{column}{.3\textwidth}
+\begin{center}
+\only<1>{\begin{block}{Ügynök}
+Az autonóm cselekvő, ami a feladat végrehajtására törekszik.
+\end{block}}
+\only<2>{\begin{block}{Környezet}
+Egy fekete doboz, amely az ügynök cselekvéseinek helyszíne.
+\end{block}}
+\only<3>{\begin{block}{Idő}
+RL folyamán az időlépések diszkrétek:\\
+$t\in{1,2,3,...}$
+\end{block}}
+\only<4>{\begin{block}{Állapot}
+Az ügynök megfigyelése a környezetre vonatkozóan. A környezetet leíró változók összessége.\\
+Jelölés: $s\in{S}$, ahol $S$ az összes állapot halmaza.
+\end{block}}
+\only<5>{\begin{block}{Jutalom}
+Az ügynök cselekvésének jóságát jelző skalár.\\
+Jelölés: $r\in{\mathbb{R}}$
+\end{block}}
+\only<6>{\begin{block}{Cselekvés}
+Az ügynök által végrehajtott művelet, ami a környezetet befolyásolja.\\
+Jelölés: $a \in{A}$, ahol $A$ az összes cselekvés halmaza.
+\end{block}}
+\only<7>{\begin{block}{Politika}
+Egy állapot $\rightarrow$ cselekvés leképezés. Az ügynök cselekvéseinek szabályait adja meg.\\
+Jelölés:\\
+\begin{itemize}
+	\item Determinisztikus: $\pi\in{S\rightarrow}A$
+	\item Sztochasztikus: $\pi\in{S\times}A\rightarrow [0,1]$\\
+	Röviden: $\pi (s,a)$\\
+	Vagy: $\pi (a|s)$
+\end{itemize} 
+\end{block}}
+\end{center}
+\end{column}
+\begin{column}{.7\textwidth}
+\includegraphics[width=10cm, keepaspectratio]{images/reinforcement_7.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Az ügynök}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A megerősítéses tanulásban egy ügynök \textbf{(cselekvő) megfigyeli a környezetet, és ezalapjáb cselekvéseket tesz a környezetben. A cselekvéseiért és a környezet változásáért jutalmat kap}.\par\smallskip
+Az ügynök célja, hogy a jutalmakat hosszú távon maximalizálja. Az ügynök lehet:
+\begin{itemize}
+	\item A program, ami egy robotot irányít
+	\item A program, ami PacMan-t irányítja
+	\item Egy Go-t játszó program
+	\item Lehet egy okos termosztát is
+	\item Kereskedő a tőzsdén
+\end{itemize}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/reinforcement_8.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Politika}
+Az az algoritmus, ami az ügynököt irányítja. A politika által határozza meg az ügynök a cselekvéseit.\par\smallskip
+\textbf{A politika egy modell, ami a környezetet leíró változókat fogadja bemenetként, és az outputja egy cselekvés a cselekvések választható halmazából.}
+\begin{center}
+\includegraphics[width=12cm, height=7cm, keepaspectratio]{graphs/reinforcement_4.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Interakció a környezettel}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\begin{itemize}
+	\item Az ügynök és a környezet egymásra hatnak. Az ügynök cselekszik, ennek hatására a környezet megváltozik. Az ügynök megfigyeli a környezetet, majd ismét cselekszik:
+	$s_1 \rightarrow a_1 \rightarrow s_2 \rightarrow a_2 \rightarrow ... \rightarrow s_t 			\rightarrow a_t$
+	\item A jutalom azonnali, és cselekvés-állapot párosért jár: $R(s, a)$
+	\item A környezet változását az átmeneti valószínűségek adják: $P(s'|s, a)$, ami $s'$ következő állapot valószínűsége $s$ állapotból, $a$ cselekvést követően. Ez a \textbf{környezet dinamikája}.
+\end{itemize}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{itemize}
+	\item Az ügynök célja a lehető legmagasabb jutalom összegyűjtése hosszú távon: 
+	\begin{block}{}
+	\vspace{-0.2cm}
+	\[
+	E_{\pi}(r_{1}+r_{2}+r_{3}+...)\rightarrow{max}
+	\]
+	\end{block}		
+\end{itemize}
+\begin{center}
+\includegraphics[width=7.5cm, keepaspectratio]{images/reinforcement_9.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Epizódok}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A megerősítéses tanulás egyetlen tanítási iterációja egy epizód. \textbf{Egy epizód addig tart, míg az ügynök el nem ér valamilyen vég/terminális állapotba.} A végállapot lehet: 
+\begin{itemize}
+	\item A cél teljesítése
+	\item Teljes bukás / halál
+	\item Időkeret lejárása
+	\item Részfeladat teljesítése
+	\item Jutalom összeg összegyűjtése
+\end{itemize}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/reinforcement_10.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Politika javítása}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Egy példa környezet: CartPole}
+\begin{columns}
+\begin{column}{.6\textwidth}
+\only<1>{A CartPole egy egyszerű, de kihívást jelentő probléma. Egy oszlop egy szekérre van helyezve, és az ügynök célja, hogy a szekeret mozgatva az oszlopot egyensúlyban tartsa.}
+\only<2>{\begin{itemize}
+	\item \textbf{Állapotok}: Az állapot négy valós szám, amelyek a szekér pozícióját, sebességét, az oszlop szögét és szögsebességét írják le.
+	\item \textbf{Cselekvések}: Két lehetséges cselekvés van: a szekér mozgatása balra vagy jobbra.
+	\item \textbf{Jutalmak}: Minden lépésért, amely során az oszlop nem esik le, a rendszer egy pontot ad. A cél az, hogy minél tovább fenn tartsuk az oszlopot, ezzel maximalizálva a kumulatív jutalmat.
+	\item \textbf{Epizód}: Az epizód akkor ér véget, ha az oszlop egy bizonyos szögnél jobban elhajlik, vagy ha a szekér kimegy a meghatározott határokon kívülre.
+\end{itemize}}
+\end{column}
+\begin{column}{.4\textwidth}
+\begin{center}
+\includegraphics[width=5cm, height=7cm, keepaspectratio]{images/reinforcement_11.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Egy egyszerű kezdeti politika}
+Az első egy keménykódolt politika: \textbf{olyan statikus szabályrendszer, amelyet nem gépi tanulás segítségével ismer meg az ügynök, hanem egy determinisztikus program vezérli}:
+\begin{small}
+\begin{center}
+\begin{lstlisting}
+for episode in range(n_episodes):
+	for step in range(n_steps):
+		if obs.theta < 0:
+			action = 0
+		else:
+			action = 1
+		obs, reward = env.step(action)
+\end{lstlisting}
+\end{center}
+\end{small}
+A politika szerint ha a $\theta$ oszlop dőlési szöge kevesebb, mint $0$, a kocsit balra tolja, egyébként jobbra.\par\smallskip
+Az \texttt{env.step(action)} függvény segítségével hajtja végre az ügynök a választott cselekvését, majd a környezet visszaadja neki a jutalmat és a következő állapotot. 
+\end{frame}
+
+\begin{frame}{Neurális hálózat politika}
+\textbf{A szabályok kézzel való implementálása hosszas és túlságosan specifikus.} Ettől egy jobb hozzáállás, ha egy gépi tanulás modell becsüli a cselekvéseket a környezeti változók alapján.\par\smallskip
+A modell bemenete ebben az esetben \textbf{a környezeti változók vektora, a kimenete pedig a cselekvés, amit az ügynök végre fog hajtani}. A tanítás eljárása pedig a neurális hálózat javításaként értelmezhető. 
+\begin{center}
+\includegraphics[width=12cm, height=7cm, keepaspectratio]{graphs/reinforcement_5.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Politika hálózat működése}
+A hálózat output neuronjai azt a valószínűséget becsülik meg, h\textbf{ogy mekkora valószínűséggel az adott cselekvés lesz a leginkább jövedelmező az ügynök számára}.\par\smallskip
+Ezután történik egy véletlen mintavétel, ahol $\varepsilon$ valószínűséggel a legjobb cselekvés fog szerepelni, $1-\varepsilon$ valószínűséggel pedig véletlen cselekvés. \textbf{Ezzel lesz képes az ügynök felfedezni véletlen cselekvéseket a nem várt, de magas jutalom reményében}. 
+\begin{center}
+\includegraphics[width=14cm, height=7cm, keepaspectratio]{graphs/reinforcement_6.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{A kredit hozzárendelési probléma}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\only<1>{Ha lehetséges lenne tudni minden lépésben, hogy melyik az optimális cselekvés a neurális hálózat egyszerűen tanítható lenne a keresztentrópia minimalizálásával.\par\smallskip
+\textbf{Viszont az RL-ben a visszajelzések ritkák és késleltetettek. Az ügynök egyetlen visszajelzése amit kap, a jutalom, és nem mindig az utolsó cselekvés az, ami felelős a jutalomért.}\par\smallskip
+Például: ha az ügynök 100 lépésen keresztül egyensúlyozza a rudat, majd leejti, honnan lehet tudni melyik cselekvés volt a felelős a leejtésért?}
+\only<2>{A probléma megoldására az RL bevezet egy $\gamma$ diszkontálási tényezőt, amely \textbf{megadja a jövőbeli jutalmak jelenbeli értékét.} Valamely $r$ jutalom értéke $k$ időlépés után $\gamma^{k-1}$.\par\smallskip
+Példa: ha az ágens háromszor jobbra megy, ezután a három jutalma $\left[+10, 0, -50\right]$, és $\gamma=0.8$ az első cselekvés visszatérése $10 + 0 \cdot \gamma + \gamma^2 -50 = -22$.\par\smallskip
+\textbf{Ha $\gamma=0$, a modell a jelenbeli jutalmat részesíti előnyben. Ha viszont $1$ közeli az értéke, a hosszú távú jutalomra törekszik.}}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/reinforcement_12.png}
 \end{center}
 \end{column}
 \end{columns}

@@ -1,0 +1,86 @@
+digraph reinforcement {
+    graph [dpi=300]
+    rankdir="LR"
+
+    splines=false
+    ranksep=1.2
+
+    subgraph cluster_1 {
+        label="Politika"
+        style="dotted"
+        input1 [label="", shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
+        input2 [label="", shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
+        hidden1 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
+        hidden2 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
+        hidden3 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
+        hidden4 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
+        output1 [label="2", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
+        output2 [label="1", shape="circle", penwidth=2, style="filled", fillcolor="red"]
+        output3 [label="3", shape="circle", penwidth=2, style="filled", fillcolor="red"]
+    }
+
+    subgraph cluster_2 {
+        label="Inputok"
+        style="dotted"
+        wall_dist [label="Faltól való távolság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        speed [label="Gyorsaság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+    }
+
+    random_sample [shape=none, margin=0, label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+            <TR>
+                <TD COLSPAN="10" BGCOLOR="white">Véletlen mintavétel</TD>
+            </TR>
+            <TR>
+                <TD BGCOLOR="#FF0000">1</TD>
+                <TD BGCOLOR="#00FF00">2</TD>
+                <TD BGCOLOR="#FF0000">3</TD>
+                <TD BGCOLOR="#00FF00">2</TD>
+                <TD BGCOLOR="#00FF00">2</TD>
+                <TD BGCOLOR="#FF0000">1</TD>
+                <TD BGCOLOR="#00FF00">2</TD>
+                <TD BGCOLOR="#FF0000">3</TD>
+                <TD BGCOLOR="#00FF00">2</TD>
+                <TD BGCOLOR="#FF0000">3</TD>
+            </TR>
+        </TABLE>
+    >];
+
+    action [label="Választott\ncselekvés", shape="plaintext"]
+    output [label="2", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
+
+    {rank="same"; action; output}
+
+    wall_dist:e -> input1 [style="dashed"]
+    wall_dist:e -> input2 [style="dashed"]
+    speed:e -> input1 [style="dashed"]
+    speed:e -> input2 [style="dashed"]
+
+    input1 -> hidden1
+    input2 -> hidden1
+    input1 -> hidden2
+    input2 -> hidden2
+    input1 -> hidden3
+    input2 -> hidden3
+    input1 -> hidden4
+    input2 -> hidden4
+
+    hidden1 -> output1
+    hidden2 -> output1
+    hidden3 -> output1
+    hidden4 -> output1
+    hidden1 -> output2
+    hidden2 -> output2
+    hidden3 -> output2
+    hidden4 -> output2
+    hidden1 -> output3
+    hidden2 -> output3
+    hidden3 -> output3
+    hidden4 -> output3
+
+    output1 -> random_sample
+    output2 -> random_sample
+    output3 -> random_sample    
+
+    random_sample -> output
+}
