@@ -1,0 +1,14 @@
+digraph reinforcement {
+    graph [dpi=300]
+    rankdir="LR"
+    splines=false
+    //ranksep=1.2
+
+    state [label="Aktuális\nállapot", shape="rectangle", ]
+    best [label="Legjobb\ncselekvés", shape="rectangle", ]
+    random [label="Véletlen\ncselekvés", shape="rectangle", ]
+
+    state -> best [label="1-ε"]
+    state -> random [label="ε"]
+
+}

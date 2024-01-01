@@ -16,14 +16,15 @@ digraph reinforcement {
         hidden4 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
         output1 [label="", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
         output2 [label="", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
-        output3 [label="", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
     }
 
     subgraph cluster_2 {
         label="Inputok"
         style="dotted"
-        wall_dist [label="Faltól való távolság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
-        speed [label="Gyorsaság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        position [label="Faltól való távolság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        velocity [label="Gyorsaság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        angle [label="Oszlop szöge", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        angular_velocity [label="Oszlop szögsebessége", shape="rectangle", style="filled", fillcolor="yellow", width=2]
     }
 
     subgraph cluster_3 {
@@ -31,13 +32,17 @@ digraph reinforcement {
         style="dotted"
         left [label="Balra", shape="rectangle", style="filled", fillcolor="red", width=1]
         right [label="Jobbra", shape="rectangle", style="filled", fillcolor="red", width=1]
-        accelerate [label="Gyorsít", shape="rectangle", style="filled", fillcolor="red", width=1]
     }
 
-    wall_dist:e -> input1 [style="dashed"]
-    wall_dist:e -> input2 [style="dashed"]
-    speed:e -> input1 [style="dashed"]
-    speed:e -> input2 [style="dashed"]
+    position:e -> input1 [style="dashed"]
+    velocity:e -> input1 [style="dashed"]
+    angle:e -> input1 [style="dashed"]
+    angular_velocity:e -> input1 [style="dashed"]
+
+    position:e -> input2 [style="dashed"]
+    velocity:e -> input2 [style="dashed"]
+    angle:e -> input2 [style="dashed"]
+    angular_velocity:e -> input2 [style="dashed"]
 
     input1 -> hidden1
     input2 -> hidden1
@@ -56,12 +61,7 @@ digraph reinforcement {
     hidden2 -> output2
     hidden3 -> output2
     hidden4 -> output2
-    hidden1 -> output3
-    hidden2 -> output3
-    hidden3 -> output3
-    hidden4 -> output3
 
     output1 -> left [style="dashed"]
     output2 -> right [style="dashed"]
-    output3 -> accelerate [style="dashed"]
 }

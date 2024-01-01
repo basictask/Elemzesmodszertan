@@ -16,45 +16,51 @@ digraph reinforcement {
         hidden4 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
         output1 [label="2", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
         output2 [label="1", shape="circle", penwidth=2, style="filled", fillcolor="red"]
-        output3 [label="3", shape="circle", penwidth=2, style="filled", fillcolor="red"]
     }
 
     subgraph cluster_2 {
         label="Inputok"
         style="dotted"
-        wall_dist [label="Faltól való távolság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
-        speed [label="Gyorsaság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        position [label="Faltól való távolság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        velocity [label="Gyorsaság", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        angle [label="Oszlop szöge", shape="rectangle", style="filled", fillcolor="yellow", width=2]
+        angular_velocity [label="Oszlop szögsebessége", shape="rectangle", style="filled", fillcolor="yellow", width=2]
     }
 
     random_sample [shape=none, margin=0, label=<
         <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
             <TR>
-                <TD COLSPAN="10" BGCOLOR="white">Véletlen mintavétel</TD>
+                <TD COLSPAN="10" BGCOLOR="white">Mintavétel (ε = 0.5)</TD>
             </TR>
             <TR>
                 <TD BGCOLOR="#FF0000">1</TD>
-                <TD BGCOLOR="#00FF00">2</TD>
-                <TD BGCOLOR="#FF0000">3</TD>
-                <TD BGCOLOR="#00FF00">2</TD>
-                <TD BGCOLOR="#00FF00">2</TD>
+                <TD BGCOLOR="#CAFF70">2</TD>
                 <TD BGCOLOR="#FF0000">1</TD>
-                <TD BGCOLOR="#00FF00">2</TD>
-                <TD BGCOLOR="#FF0000">3</TD>
-                <TD BGCOLOR="#00FF00">2</TD>
-                <TD BGCOLOR="#FF0000">3</TD>
+                <TD BGCOLOR="#CAFF70">2</TD>
+                <TD BGCOLOR="#CAFF70">2</TD>
+                <TD BGCOLOR="#FF0000">1</TD>
+                <TD BGCOLOR="#CAFF70">2</TD>
+                <TD BGCOLOR="#FF0000">1</TD>
+                <TD BGCOLOR="#CAFF70">2</TD>
+                <TD BGCOLOR="#FF0000">1</TD>
             </TR>
         </TABLE>
     >];
 
     action [label="Választott\ncselekvés", shape="plaintext"]
-    output [label="2", shape="circle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
+    output [label="2", shape="rectangle", penwidth=2, style="filled", fillcolor="darkolivegreen1"]
 
     {rank="same"; action; output}
 
-    wall_dist:e -> input1 [style="dashed"]
-    wall_dist:e -> input2 [style="dashed"]
-    speed:e -> input1 [style="dashed"]
-    speed:e -> input2 [style="dashed"]
+    position:e -> input1 [style="dashed"]
+    velocity:e -> input1 [style="dashed"]
+    angle:e -> input1 [style="dashed"]
+    angular_velocity:e -> input1 [style="dashed"]
+
+    position:e -> input2 [style="dashed"]
+    velocity:e -> input2 [style="dashed"]
+    angle:e -> input2 [style="dashed"]
+    angular_velocity:e -> input2 [style="dashed"]
 
     input1 -> hidden1
     input2 -> hidden1
@@ -73,14 +79,9 @@ digraph reinforcement {
     hidden2 -> output2
     hidden3 -> output2
     hidden4 -> output2
-    hidden1 -> output3
-    hidden2 -> output3
-    hidden3 -> output3
-    hidden4 -> output3
 
     output1 -> random_sample
     output2 -> random_sample
-    output3 -> random_sample    
 
     random_sample -> output
 }
