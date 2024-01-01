@@ -6,6 +6,7 @@
 *.tgz
 .DS_Store
 sources/*
+elemzesmodszertan_merged.pdf
 
 # LaTeX
 *.aux
