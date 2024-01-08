@@ -314,6 +314,21 @@ Ezután történik egy véletlen mintavétel, ahol $\varepsilon$ valószínűsé
 \end{center}
 \end{frame}
 
+\begin{frame}{Tapasztalat visszajátszás}
+\begin{columns}
+\begin{column}{.5\textwidth}
+A tapasztalat visszajátszás a neurális hálózat alapú ügynökök \textbf{belső memóriája}.\par\smallskip
+A memória $\left[ s,a,r,s' \right]$ négyeseket tartalmaz. Minden alkalommal amikor az ügynök cselekszik, az általa tapasztalt $s,a,r,s'$ elmentődik.\par\smallskip
+A\textbf{mikor tanulási iterációra kerül a sor az ügynök véletlen és rendezetlen mintát kap a visszajátszásból, melynek számossága megegyezik a kötegmérettel}. Eszerint számolja a költségfüggvényt majd frissíti a modell paramétereit. 
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+\includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/reinforcement_9.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
 \begin{frame}{A kredit hozzárendelési probléma}
 \begin{columns}
 \begin{column}{.5\textwidth}

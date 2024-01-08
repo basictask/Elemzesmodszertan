@@ -224,13 +224,13 @@ A gépi tanulás esetén szükség van arra, hogy meglehessen mondani, mennyire 
 \begin{block}{Rezidum}
 Az $y_i$ valós érték és $\hat{y}_i$ becsült érték távolsága adott $d$ távolságfüggvény szerint:
 \[
-d\left( y_i,\hat{y}_i \right)
+r_i = d\left( y_i,\hat{y}_i \right), \; r_i \in \mathbb{R}
 \]
 \end{block}
 \begin{block}{Költségfüggvény}
 A rezidumok összege az összes minta adatpontra:
 \[
-L\left( y,\hat{y}  \right) = \sum_{i=1}^n L\left( y_i,\hat{y}_i \right)
+L\left( y,\hat{y}  \right) = \sum_{i=1}^n r_i = \sum_{i=1}^n d\left( y_i,\hat{y}_i \right)
 \]
 \end{block}
 \end{column}
@@ -339,7 +339,7 @@ Ahogy egyre tanultabb lesz a modell a hiba csökkenni fog, viszont annál specia
 Egy $f\left( x,y,z \right)$ függvény esetén gradiens egy olyan vektor, amely arra az irányra mutat, ahol az $f$ függvény a legmeredekebben emelkedik.\par\smallskip
 Ha $f$ 3D térben van definiálva, $\left( x,y,z \right)$ koordinátákkal, a gradiens: 
 \[
-\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right)
+\nabla f = \left[ \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right]
 \]
 A gradiens tetszőleges dimenziószámra általánosítható. 
 \end{block}
