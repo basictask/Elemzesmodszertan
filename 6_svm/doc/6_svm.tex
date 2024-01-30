@@ -81,7 +81,7 @@ A margó egyik oldalán $A$, a másikon pedig $B$ osztály lesz a predikció.
 A tartó vektor gépek nagyon szenzitívek az adatok méretezésére.
 \begin{block}{Normalizálás}
 A normalizálás (vagy méretezés) célja, hogy az adatkészlet különböző változóit egységes mértékrendszerbe hozza.\par\smallskip
-Ennek következménye, hogy a predikcióhoz minden változó egyenlő súllyal hozzájáruljon.
+Ennek következménye, hogy a predikcióhoz minden változó egyenlő súllyal járul hozzá.
 \end{block}
 Érdemes megfigyelni az út változását méretezés előtt és után.
 \end{column}
@@ -157,7 +157,7 @@ Ebben az esetben a magasabb dimenziós tér a \textbf{négyzetes transzformáci�
 \begin{column}{.5\textwidth}
 A transzformációs csővezeték a következő:
 \begin{enumerate}
-	\item Polinomikus jellemzők felvétele
+	\item Polinomiális jellemzők felvétele
 	\item Jellemzők normalizálása
 	\item SVM osztályozó futtatása
 \end{enumerate}
@@ -193,20 +193,20 @@ A példában az előző, 1D adathalmazhoz választott két tájékozódási pont
 \end{columns}
 \end{frame}
 
-\begin{frame}{Polinomikus függvények kernelként}
+\begin{frame}{Polinomiális függvények kernelként}
 \begin{columns}
 \begin{column}{.5\textwidth}
-\only<1>{Polinomikus jellemzők hozzáadása alacsony polinomikus szinten nem képes komplex adathalmazokkal dolgozni.\par\medskip
-\textbf{Magas szinten viszont nagyon lassúvá teheti a modellt}, mivel minden polinomikus szinten egy külön transzformációt jelent a jellemzőkre.}
-\only<2>{\begin{block}{Polinomikus kernel}
-A polinomikus kernel transzformáció lineárisan nem szeparálható adathalmazokat transzformál olyan magasabb dimenziós térbe, ahol már lineárisan szeparálhatóvá válnak:
+\only<1>{Polinomiális jellemzők hozzáadása alacsony polinomiális szinten nem képes komplex adathalmazokkal dolgozni.\par\medskip
+\textbf{Magas szinten viszont nagyon lassúvá teheti a modellt}, mivel minden polinomiális szinten egy külön transzformációt jelent a jellemzőkre.}
+\only<2>{\begin{block}{Polinomiális kernel}
+A polinomiális kernel transzformáció lineárisan nem szeparálható adathalmazokat transzformál olyan magasabb dimenziós térbe, ahol már lineárisan szeparálhatóvá válnak:
 \[
 K\left( x,y \right) = \left( \left( x \cdot y \right) + b \right)^d
 \]
 Ahol:
 \begin{itemize}
 	\item $b$: A konstans torzítás
-	\item $d$: A transzformáció polinomikus foka
+	\item $d$: A transzformáció polinomiális foka
 \end{itemize}
 \end{block}}
 \end{column}
@@ -220,7 +220,7 @@ Ahol:
 \end{frame}
 
 \begin{frame}{A kernel trükk}
-Egy $\varphi$ másodrendű polinomikus leképezés 2D tanító halmazra 3D eredményt ad:
+Egy $\varphi$ másodrendű polinomiális leképezés 2D tanító halmazra 3D eredményt ad:
 \begin{block}{}
 \[
 \varphi\left( x \right) = \varphi\left( \begin{pmatrix}
@@ -266,7 +266,7 @@ Látható, hogy a vektorok belső szorzata megegyezik az eredeti vektorok belső
 \begin{frame}{Radiális bázis függvények kernelként}
 \begin{columns}
 \begin{column}{.5\textwidth}
-Ahogy a polinomikus jellemzők esetében, úgy \textbf{a hasonlósági jellemzők esetén is működik a kernel trükk}.\par\smallskip
+Ahogy a polinomiális jellemzők esetében, úgy \textbf{a hasonlósági jellemzők esetén is működik a kernel trükk}.\par\smallskip
 A diagramon különböző $\gamma$ és $C$ értékekkel tanított modellek láthatóak.\par\smallskip
 A $\gamma$ növelése szűkebb haranggörbékkel végzi az illesztést, ezért minden egyed hasonlósági tartománya kisebb. A $\gamma$ csökkentése nagyobb befolyási teret ad a pontoknak. 
 \end{column}
@@ -291,7 +291,7 @@ A $\gamma$ növelése szűkebb haranggörbékkel végzi az illesztést, ezért m
 \begin{columns}
 \begin{column}{.5\textwidth}
 Az SVM regresszió esetében a cél ellentétes az osztályozáséval. A legnagyobb út helyett az algoritmus megpróbálja \textbf{a lehető legtöbb egyedet az útra illeszteni a margósértések minimumon tartása mellett}.\par\smallskip
-Az út szélességét a $\varepsilon$ paraméter szabályozza. Nagyon $\varepsilon$ paraméter nagyobb margót jelent. A margón belül hozzáadott egyedek nem befolyásolják a modell definíciót. Ez az $\varepsilon$-érzéketlenség. 
+Az út szélességét a $\varepsilon$ paraméter szabályozza. Nagyobb $\varepsilon$ paraméter nagyobb margót jelent. A margón belül hozzáadott egyedek nem befolyásolják a modell definíciót. Ez az $\varepsilon$-érzéketlenség. 
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
@@ -306,7 +306,7 @@ Az út szélességét a $\varepsilon$ paraméter szabályozza. Nagyon $\varepsil
 \begin{columns}
 \begin{column}{.5\textwidth}
 Kernelizált SVM regresszorok használata lehetséges regressziós problémák esetén is.\par\smallskip
-A következő diagramokon másodfokú polinomikus kernellel tanított SVM regresszorok láthatóak. 
+A következő diagramokon másodfokú polinomiális kernellel tanított SVM regresszorok láthatóak. 
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}

@@ -95,7 +95,7 @@ A szavazó osztályozók nagyobb pontosságot érnek el együttesen, mint a mode
 \begin{columns}
 \begin{column}{.5\textwidth}
 A szavazó osztályozó kifejezés modellek egy csoportjára utal, amelyben a modellek \textbf{egymástól függetlenül képesek predikciót adni} egy adott mintaegyedre vonatkozóan.\par\smallskip
-A szavazó osztályozó a végső predikciót úgy állítja elő, hogy \textbf{a benne lévő modellek predikcióit aggregálja} valamilyen módszertan szerint pl. kiválasztja belőle a leggyakoribb elemet. 
+A szavazó osztályozó a végső predikciót úgy állítja elő, hogy \textbf{a benne lévő modellek predikcióit aggregálja} valamilyen módszertan szerint (pl. átlagolás, módusz, medián) kiválasztja belőle a leggyakoribb elemet. 
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
@@ -167,7 +167,7 @@ Az együttes tanulás súlyozott változata. A modellek szekvenciálisan állnak
 \begin{column}{.5\textwidth}
 Az Adaptív turbózás algoritmusa:
 \begin{enumerate}
-	\item Az algoritmus minden mintaegyedhez $w=\frac{1}{n}$ kezdeti súlyt rendel, ahol $n$ az összes a minta halmaz mérete.
+	\item Az algoritmus minden mintaegyedhez $w=\frac{1}{n}$ kezdeti súlyt rendel, ahol $n$ a minta halmaz mérete.
 	\item Minden $x$ változóra egy döntési tönk kerül illesztésre. Ez egy lineáris döntési határ minden változóra. 
 	\item Az a döntési tönk kerül kiválasztásra, amely a legjobban képes szeparálni az egyedeket. Ez ebben az esetben az $x_2$ változóhoz tartozó modell. 
 \end{enumerate}
@@ -220,7 +220,7 @@ Az Adaptív turbózás algoritmusa:
 	w \leftarrow w \cdot e^{W_j}
 	\]
 	\end{block}
-	Minden helyesen beosztályozott mintaegyedre:
+	Minden helytelenül beosztályozott mintaegyedre:
 	\begin{block}{}
 	\vspace{-0.2cm}
 	\[
