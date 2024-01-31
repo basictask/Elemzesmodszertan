@@ -16,6 +16,7 @@ elemzesmodszertan_merged.pdf
 *.log
 *.nav
 *.out
+*.vrb
 *.dvi
 *.snm
 *.gz
