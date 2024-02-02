@@ -434,10 +434,18 @@ Ezzel sikerül javítania a $K$-közép problémáin amik miatt nem teljesít j�
 \begin{columns}
 \begin{column}{.5\textwidth}
 A keverékek esetén a regularizáció a kovariancia mátrixokra tett megkötésekkel érhető el. Ez a \texttt{covariance\_type} paraméter. A lehetséges értékei a következők:\par\medskip
-\only<1>{\texttt{spherical}: Kör alakú klaszterek, különböző átmérőkkel (szórással).}
-\only<2>{\texttt{diag}: Csak ellipszoid alakú lehet a klaszter, és a tengelyeinek a koordináta-rendszer tengelyeivel párhuzamosnak kell lennie.}
-\only<3>{\texttt{tied}: Minden létrejövő klaszternek ugyanolyan formájúnak, méretűnek, és orientációjúnak kell lennie.}
-\only<4>{\texttt{full}: Nincs regularizáció.}
+\only<1>{\begin{block}{}
+\texttt{spherical}: Kör alakú klaszterek, különböző átmérőkkel (szórással).
+\end{block}}
+\only<2>{\begin{block}{}
+\texttt{diag}: Csak ellipszoid alakú lehet a klaszter, és a tengelyeinek a koordináta-rendszer tengelyeivel párhuzamosnak kell lennie.
+\end{block}}
+\only<3>{\begin{block}{}
+\texttt{tied}: Minden létrejövő klaszternek ugyanolyan formájúnak, méretűnek, és orientációjúnak kell lennie.
+\end{block}}
+\only<4>{\begin{block}{}
+\texttt{full}: Nincs regularizáció.
+\end{block}}
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
