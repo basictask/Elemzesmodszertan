@@ -283,8 +283,12 @@ Az elasztikus háló egy \textbf{arányosságot definiál a LASSO és ridge mode
 Ha $r=0$ az elasztikus háló megegyezik a ridge modellel, ha $r=1$ akkor megegyezik a LASSO függvénnyel. 
 \begin{block}{Az elasztikus háló költségfüggvénye}
 \[
-J\left( \theta \right) = MSE\left( \theta \right) + r \cdot \alpha \cdot \sum \left|\theta\right| + \left( 1-r \right) \cdot \alpha \cdot \sum \theta^2
+J\left( \theta \right) = MSE\left( \theta \right) + r \cdot \alpha \cdot \sum \left|\theta\right| + \left( 1-r \right) \cdot \alpha \cdot \sum \theta^2 = 
 \]
+\[
+= MSE\left( \theta \right) + r \cdot \alpha \cdot \ell_1 + \left( 1 - r \right) \cdot \alpha \cdot \ell_2
+\]
+\vspace{-.4cm}
 \begin{itemize}
 	\item $MSE\left( \theta \right)$: Átlagos eltérés-négyzet
 	\item $r \in \left[ 0, 1 \right]$: Keverési arány
