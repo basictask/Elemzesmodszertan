@@ -12,7 +12,7 @@ output_filename = 'elemzesmodszertan_merged.pdf'
 
 if os.path.isfile(output_filename):
     os.remove(output_filename)
-    print(f'Removed {output_filename}')
+    print(f'Removed {output_filename}\n')
 
 # Regular expression to match directories in {number}_{text}/doc format
 dir_pattern = re.compile(r'^\./(\d{1,2})_([^/]+)/doc/(\d+)_(.+)\.pdf$')
@@ -33,8 +33,11 @@ for root, dirs, files in os.walk(root_folder):
 # Sort the directories based on the number
 numbered_paths.sort()
 
-print('Paths to merge:\n', numbered_paths)
-print('Running merge on paths...')
+print('\nPaths to merge:')
+for path in numbered_paths:
+	print(path)
+
+print('\nRunning merge on paths...', end='')
 
 merged_document = fitz.open()
 
@@ -43,9 +46,9 @@ for _, full_path in numbered_paths:
     with fitz.open(full_path) as pdf:
         for page in range(len(pdf)):
             merged_document.insert_pdf(pdf, from_page=page, to_page=page)
+    print('*', end='')
 
 merged_document.save(output_filename)
 merged_document.close()
 
-print('Output successful')
-
+print('\nOutput successful')
