@@ -30,5 +30,5 @@ A gyökérmappában található scriptek:
 Minden mappában két almappa található:  
 - `code`: Esettanulány, ami megvalósítja a tanult témakört.  
 - `doc`: Dokumentáció LaTeX és pdf formátumban.  
-\t - `images`: Diagramok és képek a dokumentációban. Itt megtalálható egy témának megfelelően elnevezeett Jupyter notebook, ami a képek generálásáért felelős. Az itt található programkód publikus és szabadon felhasználható az órai munka során.  
-\t - `graphs` (opcionális): Gráfok `dot` formátumban, amit a Graphviz szoftver segítségével lehet lerenderelni.   
+	- `images`: Diagramok és képek a dokumentációban. Itt megtalálható egy témának megfelelően elnevezeett Jupyter notebook, ami a képek generálásáért felelős. Az itt található programkód publikus és szabadon felhasználható az órai munka során.  
+	- `graphs` (opcionális): Gráfok `dot` formátumban, amit a Graphviz szoftver segítségével lehet lerenderelni.   
