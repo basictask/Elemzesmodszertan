@@ -18,11 +18,11 @@ digraph regularization {
 
     subgraph cluster_3 {
         style="invis"
-        circle21 [label="5" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
-        circle22 [label="4" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
-        circle23 [label="3" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
-        circle24 [label="2" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
-        circle25 [label="1" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle21 [label="2" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle22 [label="3" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle23 [label="4" shape="circle", penwidth=4, style="filled", fillcolor="red"]
+        circle24 [label="1" shape="circle", penwidth=4, style="filled", fillcolor="lightgreen"]
+        circle25 [label="5" shape="circle", penwidth=4, style="filled", fillcolor="red"]
     }
 
     subgraph cluster_4 {
