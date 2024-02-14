@@ -18,7 +18,7 @@ cycler==0.12.1
 debugpy==1.8.0
 decorator==5.1.1
 dtreeviz==2.2.2
-entrypoints @ file:///home/conda/feedstock_root/build_artifacts/entrypoints_1643888246732/work
+entrypoints==0.4
 etelemetry==0.3.1
 exceptiongroup==1.2.0
 executing==2.0.1
@@ -91,7 +91,7 @@ parso==0.8.3
 pathlib==1.0.1
 patsy==0.5.6
 pexpect==4.9.0
-pickleshare @ file:///home/conda/feedstock_root/build_artifacts/pickleshare_1602536217715/work
+pickleshare==0.7.5
 pillow==10.2.0
 platformdirs==4.1.0
 pluggy==1.3.0
@@ -107,7 +107,7 @@ pydantic==1.10.14
 pydot==2.0.0
 pydotplus==2.0.2
 pygame==2.5.2
-Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1700607939962/work
+Pygments==2.17.2
 PyMuPDF==1.23.8
 PyMuPDFb==1.23.7
 pyparsing==3.1.1
@@ -126,7 +126,7 @@ scikit-surprise==1.1.3
 scipy==1.11.4
 seaborn==0.13.1
 simplejson==3.19.2
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+six==1.16.0
 sniffio==1.3.0
 stack-data==0.6.3
 starlette==0.34.0
@@ -150,7 +150,7 @@ traitlets==5.14.0
 traits==6.3.2
 triton==2.1.0
 typer==0.4.2
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1702176139754/work
+typing_extensions==4.9.0
 tzdata==2023.4
 urllib3==2.1.0
 uvicorn==0.25.0
