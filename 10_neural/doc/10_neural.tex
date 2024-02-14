@@ -370,7 +370,7 @@ A konvolúciós hálókban a \textbf{konvolúciós és pooling rétegek felelnek
 \begin{column}{.6\textwidth}
 A konvolúció egy matematikai művelet, ami két függvényt kombinál egy harmadikká. Egy \textbf{jelfüggvényt} valamilyen \textbf{magfüggvénnyel} vegyít egy outputtá, ami megadja, hogy \textbf{a mag mennyiben befolyásolja a jelet}. 
 \begin{block}{Konvolúció (2D, diszkrét)}
-A diszkrét konvolúció két 2D tömbön értelmezett, és jellemzők kivonatolására, szűrők alkalmazására használatos. Konvolúció $f$ jelen és $g$ magon, $i,j$ képkoordinátákra:
+A diszkrét konvolúció két 2D függvényen értelmezett, és jellemzők kivonatolására, szűrők alkalmazására használatos. Konvolúció $f$ jel- és $g$ magfüggvényen, $i,j$ képkoordinátákra:
 \[
 (f \textasteriskcentered g)[i, j] = \sum_{m=-\infty}^\infty \sum_{n=-\infty}^\infty g[i-m, j-n]f[m,n]
 \]
@@ -439,7 +439,7 @@ Nagyobb lépésméret kisebb jellemzőméretet eredményez.
 \begin{columns}
 \begin{column}{.5\textwidth}
 \only<1>{A konvolúciós neuron súlyai reprezentálhatók egy konvolúciós szűrővel. A neuron ezeket a súlyokat finomhangolja a céltól függően.}
-\only<2->{Az ábrákon egy vertikális és horizontális szűrővel konvolvált képek láthatók. A szűrők egy tengelyen $1$ értéket vesznek fel, mindenhol máshol $0$ értékeket.}
+\only<2->{Az ábrákon vertikális, majd horizontális szűrővel konvolvált képek láthatók. A szűrők egy tengelyen $1$ értéket vesznek fel, mindenhol máshol $0$ értékeket.}
 \begin{center}
 \includegraphics<2>[width=7cm, height=3.5cm, keepaspectratio]{images/neural_15.png}
 \includegraphics<3>[width=7cm, height=3.5cm, keepaspectratio]{images/neural_17.png}
