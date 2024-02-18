@@ -376,7 +376,7 @@ Gépi tanulási módszer kétosztályos (bináris) kimenetelek előrejelzésére
 \begin{block}{}
 \[
 \hat{y}\begin{cases}
-_{1}^{0} & _{ha\;\hat{p}\,\leq\,\theta}^{ha\;\hat{p}\,>\,\theta}\end{cases}
+_{1}^{0} & _{ha\;\hat{p}\,\geq\,\theta}^{ha\;\hat{p}\,<\,\theta}\end{cases}
 \]
 Ahol $\hat{p}$ a modell által becsült valószínűség, $\hat{y}$ a becsült osztály és $\theta$ a küszöbérték.
 \end{block}
@@ -397,7 +397,7 @@ z = \theta_0 + \theta_1x_1 + \theta_2x_2 + \ldots + \theta_rx_r
 Majd ezt behelyettesíti a logisztikus függvénybe: 
 \begin{block}{}
 \[
-\sigma\left( z \right) = \frac{1}{1 + e^z}
+\sigma\left( z \right) = \frac{1}{1 + e^{-z}}
 \]
 \end{block}
 Ahol $\sigma$ a logisztikus függvény és $e$ a természetes logaritmus értéke. 
