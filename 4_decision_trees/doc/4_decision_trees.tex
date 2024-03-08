@@ -189,7 +189,7 @@ G\left(A\right) = 1 - \left(\frac{98}{98 + 30}\right)^2 - \left(\frac{30}{98 + 3
 G\left(B\right) = 1 - \left(\frac{22}{22 + 123}\right)^2 - \left(\frac{123}{22 + 123}\right)^2 = 0.25
 \]
 \[
-G\left(x\right) = \left( \frac{128}{128 + 145} \right) \cdot 0.35 \left( \frac{145}{128 + 145} \right) \cdot 0.25 = 0.3
+G\left(x\right) = \left( \frac{128}{128 + 145} \right)0.35 + \left( \frac{145}{128 + 145} \right) 0.25 = 0.3
 \]
 \end{column}
 \end{columns}
@@ -294,11 +294,11 @@ Az osztályozó fákhoz hasonlóan a regresszor fák is hajlamosak a túltanulá
 \begin{frame}{CART tanító algoritmus regressziós fákra}
 \begin{columns}
 \begin{column}{.5\textwidth}
-A regresszor fák a tisztátalanság helyett az MSE mutatót minimalizálják.\par\medskip
-Egy $V$ nódus becsült értéke a bele került mintaegyedek célváltozóikban felvett értékeinek átlaga: 
-\begin{block}{}
+A regresszor fák a tisztátalanság helyett az MSE metrikát minimalizálják.\par\medskip
+\begin{block}{Csomópont becsült értéke}
+Egy $A$ nódus becsült értéke a bele került mintaegyedek célváltozóikban felvett értékeinek átlaga: 
 \[
-\hat{y}_V = \frac{1}{m_V}\sum_{i \in m_A} y_i
+\hat{y}_A = \frac{1}{m_A}\sum_{i \in m_A} y_i
 \]
 \end{block}
 \end{column}
