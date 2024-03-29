@@ -5,6 +5,7 @@
 
 import os
 import re
+import sys
 import fitz
 
 root_folder = '.'
@@ -15,7 +16,7 @@ if os.path.isfile(output_filename):
     print(f'Removed {output_filename}\n')
 
 # Regular expression to match directories in {number}_{text}/doc format
-dir_pattern = re.compile(r'^\./(\d{1,2})_([^/]+)/doc/(\d+)_(.+)\.pdf$')
+dir_pattern = re.compile(r'.*(\d+)_(.*)\.pdf$')
 
 # List to store (number, path) tuples
 numbered_paths = []
@@ -24,14 +25,20 @@ numbered_paths = []
 for root, dirs, files in os.walk(root_folder):
     for file in files:
         # Full path of the file
-        full_path = os.path.join(root, file)
+        full_path = os.path.abspath(os.path.join(root, file))
         match = dir_pattern.match(full_path)
+        print(full_path)
         if match:
             numbered_paths.append((int(match.group(1)), full_path))
             print(full_path)
 
 # Sort the directories based on the number
 numbered_paths.sort()
+
+# Check if there are paths matched and exit if no
+if len(numbered_paths) == 0: 
+     print('No documents found to merge.')
+     sys.exit()
 
 print('\nPaths to merge:')
 for path in numbered_paths:
