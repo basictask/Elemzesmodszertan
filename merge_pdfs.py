@@ -8,7 +8,7 @@ import re
 import sys
 import fitz
 
-root_folder = '.'
+root_folder = os.path.dirname(os.path.abspath(__file__))  # By default the root folder is the folder of the script
 output_filename = 'elemzesmodszertan_merged.pdf'
 
 if os.path.isfile(output_filename):
@@ -33,7 +33,7 @@ for root, dirs, files in os.walk(root_folder):
             print(full_path)
 
 # Sort the directories based on the number
-numbered_paths.sort()
+numbered_paths = sorted(numbered_paths, key=lambda x: int(x[1].split('\\')[-1].split('_')[0]))
 
 # Check if there are paths matched and exit if no
 if len(numbered_paths) == 0: 
