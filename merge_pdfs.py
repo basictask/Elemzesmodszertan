@@ -27,22 +27,22 @@ for root, dirs, files in os.walk(root_folder):
         # Full path of the file
         full_path = os.path.abspath(os.path.join(root, file))
         match = dir_pattern.match(full_path)
-        print(full_path)
         if match:
             numbered_paths.append((int(match.group(1)), full_path))
             print(full_path)
 
 # Sort the directories based on the number
-numbered_paths = sorted(numbered_paths, key=lambda x: int(x[1].split('\\')[-1].split('_')[0]))
+sort_pattern = re.compile(r'\d+')
+numbered_paths = sorted(numbered_paths, key=lambda x: int(sort_pattern.search(os.path.basename(x[1])).group()))
 
 # Check if there are paths matched and exit if no
-if len(numbered_paths) == 0: 
-     print('No documents found to merge.')
-     sys.exit()
+if len(numbered_paths) == 0:
+    print('No documents found to merge.')
+    sys.exit()
 
 print('\nPaths to merge:')
 for path in numbered_paths:
-	print(path)
+    print(path)
 
 print('\nRunning merge on paths...', end='')
 
