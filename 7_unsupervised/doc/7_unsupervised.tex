@@ -114,17 +114,17 @@ A feladat a tekercs lehajtása a belső struktúrájának megőrzésével.
 \end{columns}
 \end{frame}
 
-\begin{frame}{A manifold hipotézis}
+\begin{frame}{Mikor érdemes alkalmazni a manifold tanulást?}
 \begin{columns}
 \begin{column}{.5\textwidth}
+Manifold tanulást alkalmazni akkor van értelme, ha a manifold hipotézis igaznak bizonyul.
 \begin{block}{Manifold hipotézis}
-A manifold feltevés két alapvetően fontos dolgot állít:
+A manifold feltevésnek két alapvetően fontos állítása van:
 \begin{itemize}
 	\item Az adathalmazban \textbf{rejlenek} manifoldok. Ez leggyakrabban empírikusan megfigyelhető.
 	\item A feladat \textbf{könnyebb lesz}, ha a manifoldnak egy alacsonyabb dimenziós terében próbáljuk megoldani.
 \end{itemize}
 \end{block}
-A manifold tanulás nem minden esetben alkalmazható.
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
@@ -151,12 +151,12 @@ Az eljárás maximalizálja az eredeti adathalmaz és a projekciója közötti v
 \end{center}
 \end{frame}
 
-\begin{frame}{Szinguláris értékfelbontás}
+\begin{frame}{A főkomponenselemzés motorja}
 \begin{columns}
 \begin{column}{.6\textwidth}
 \begin{block}{Szinguláris értékfelbontás}
 Legyen az egységvektor, amelyik az $i$-edik tengelyt definiálja, az $i$-edik főkomponens: $c_1, c_2, \ldots, c_n$.\par\smallskip
-Az eljárás $M\in \mathbb{R}$ mátrixot három mátrixra bontja $M = U \Sigma V^T$:
+Az eljárás $M\in \mathbb{R}^n$ mátrixot három mátrixra bontja $M = U \Sigma V^T$:
 \begin{itemize}
 	\item $U$: $n$ db ortonormált sajátvektort tartalmaz
 	\item $\Sigma$: Főátlóján találhatóak a szinguláris értékek
@@ -279,6 +279,7 @@ Az algoritmus két lépést ismétel, ameddig a klaszter centroidok mozgása nem
 	\item Véletlenszerű centroid inicializáció
 	\item Minden egyed hozzárendelése a hozzá legközelebb eső centroidhoz
 	\item Minden centroid mozgatása a hozzá tartozó egyedek várható értékére
+	\item 2-3 lépés ismétlése konvergenciáig
 \end{enumerate}
 \end{column}
 \begin{column}{.5\textwidth}
@@ -297,11 +298,20 @@ Az algoritmus két lépést ismétel, ameddig a klaszter centroidok mozgása nem
 \begin{frame}{Optimális klaszterszám megtalálása}
 \begin{columns}
 \begin{column}{.5\textwidth}
-A korábbi példában $K=5$ volt a klaszterszám, mert ez az adatokra ránézve nyilvánvaló volt. Viszont ez a gyakorlatban nem ennyire nyilvánvaló.\par\smallskip
-\textbf{Ha az lenne a cél, hogy a legkevesebb legyen a távolság a centroidok és a pontok között, minden pont centroid lenne}, és $0$ lenne az eltérés.
-\begin{block}{Inercia}
-A centroidok és a centroidokhoz rendelt pontok távolságainak négyzetösszege. Ahogy $K$ emelkedik, az inercia csökken. 
-\end{block}
+\only<1>{A korábbi példában $K=5$ volt a klaszterszám, mert ez az adatokra ránézve nyilvánvaló volt. Viszont ez a gyakorlatban nem ennyire nyilvánvaló.\par\smallskip
+\textbf{Ha az lenne a cél, hogy a legkevesebb legyen a távolság a centroidok és a pontok között, minden pont centroid lenne}, és $0$ lenne az eltérés.}
+\only<2>{\begin{block}{Inercia}
+A centroidok és a centroidokhoz rendelt pontok távolságainak négyzetösszege. Ahogy $K$ emelkedik, az inercia csökken.
+\[
+I = \sum_{j=1}^k \sum_{i=1}^n \lVert x_{i,j} - c_j \lVert
+\]
+\begin{itemize}
+	\item $k$: A klasztek számossága
+	\item $n$: Egyedek száma a klaszterban
+	\item $x_{i,j}$: $i$ minta adatpont $j$ klaszterben
+	\item $c_j$: $j$ klaszter centroidja
+\end{itemize}
+\end{block}}
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
@@ -333,15 +343,15 @@ Hátránya, hogy valamikor nincs könyökpont és valamikor több van.
 \begin{column}{.5\textwidth}
 A sziluett alapja a klaszteren belüli szorosság és a többi egyedtől való távolság tartás mértéke.\par\smallskip
 \begin{block}{Sziluett}
-Minden $i \in I$ mintaegyedre a sziluett $s\left( i \right)$:
+Minden $x \in X$ pontra a sziluett $s\left( x \right)$:
 \vspace{-.2cm}
 \[
-s\left( i \right) = \frac{b\left( i \right) - a\left( i \right)}{max\left( b\left( i \right), a\left( i \right) \right)}
+s\left( x \right) = \frac{b\left( x \right) - a\left( x \right)}{max\left( b\left( x \right), a\left( x \right) \right)}
 \]
 \vspace{-.4cm}
 \begin{itemize}
-	\item $a\left( i \right)$: Átlagos távolság $i$ mintaegyed, és az összes vele egy klaszterben lévő egyed között
-	\item $b\left( i \right)$: Átlagos távolság $i$ mintaegyed és az összes, egyéb klaszterben lévő mintaegyed között
+	\item $a\left( x \right)$: Átlagos távolság $x$ mintaegyed, és az összes vele egy klaszterben lévő egyed között
+	\item $b\left( x \right)$: Átlagos távolság $x$ mintaegyed és az összes, egyéb klaszterben lévő mintaegyed között
 \end{itemize}
 \end{block}
 \end{column}
@@ -349,8 +359,7 @@ s\left( i \right) = \frac{b\left( i \right) - a\left( i \right)}{max\left( b\lef
 \begin{center}
 \includegraphics[width=7cm, height=7cm, keepaspectratio]{images/unsupervised_31.png}
 \end{center}
-A sziluett tartománya: $s\left( i \right) \in \left[ -1, 1 \right]$, ahol:
-\vspace{-.3cm}
+A sziluett tartománya: $s\left( x \right) \in \left[ -1, 1 \right]$:
 \begin{itemize}
 	\item $-1$: Teljes félreosztályozás
 	\item $0$: Közömbös osztályozás
@@ -377,7 +386,8 @@ Egy térben helyet foglaló mintaegyedek halmazára vonatkoztatott sziluett-koef
 \begin{frame}{A $K$-közép limitációi}
 \begin{columns}
 \begin{column}{.5\textwidth}
-\only<1-2>{Az algoritmust sokszor kell lefuttatni, hogy a szuboptimális konfigurációkat el lehessen kerülni. A klaszterek számát kézzel kell meghatározni.}
+\only<1-2>{Az algoritmust sokszor kell lefuttatni, hogy a szuboptimális konfigurációkat el lehessen kerülni. A klaszterek számát kézzel kell meghatározni.\par\smallskip
+Ez azért történik, mert a globális optimumra való konvergenica nem garantált.}
 \only<3-4>{A $K$-közép továbbá nem viselkedik megfelelően, amikor a klaszterek méretei és alakjai változatosak, eltérő sűrűségűek. Ez abból ered, hogy a modell két pont távolságát veszi alapul.}
 \end{column}
 \begin{column}{.5\textwidth}
@@ -424,7 +434,7 @@ A DBSCAN egy sűrűség alapú klaszterezési algoritmus, amely már irregulári
 \begin{columns}
 \begin{column}{.5\textwidth}
 Meglepő módon a DBSCAN implementációnak nincs \texttt{predict()} metódusa, ezért \textbf{nem tudja egy új egyedről eldönteni, melyik klaszterhez tartozik}.\par\smallskip
-Ennek az a mögöttes racionalitása, hogy a DBScan által felismert klasztereken kellően egyszerű futtatni egy osztályozó algoritmust, mint a \texttt{KNeighborsClassifier}. Így képes új egyedeket osztályozni.
+Ennek az a mögöttes racionalitása, hogy a DBSCAN által felismert klasztereken kellően egyszerű futtatni egy osztályozó algoritmust, mint a \texttt{KNeighborsClassifier}. Így képes új egyedeket osztályozni.
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
