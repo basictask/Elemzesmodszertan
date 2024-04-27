@@ -1,4 +1,5 @@
 digraph G {
+  graph [dpi=300]
   node [shape=plaintext]
   rankdir = "LR"
   // Define the rating matrix node
