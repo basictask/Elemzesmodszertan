@@ -209,7 +209,7 @@ A példában a cél $u_1$ felhasználó értékelésének megbecsülése az AV f
 \begin{column}{.5\textwidth}
 \begin{block}{Elemek hasonlósága}
 \[
-sim\left( i_1,i_2 \right) = \frac{\sum_u\left( nr_{i_1,u} \cdot nr_{i_2,u} \right)}{\sqrt{\sum_u nr^2_{i_1,u}} \cdot \sqrt{\sum_u nr^2_{i_1,u}}}
+sim\left( i_1,i_2 \right) = \frac{\sum_u\left( nr_{i_1,u} \cdot nr_{i_2,u} \right)}{\sqrt{\sum_u nr^2_{i_1,u}} \cdot \sqrt{\sum_u nr^2_{i_2,u}}}
 \]
 Ahol:
 \begin{itemize}
@@ -222,7 +222,7 @@ Ahol:
 \begin{column}{.5\textwidth}
 \begin{block}{Felhasználók hasonlósága}
 \[
-\text{sim}(u_1, u_2) = \frac{\sum_{i} (nr_{i,u_1} \cdot nr_{i,u_2})}
+sim\left(u_1, u_2\right) = \frac{\sum_{i} (nr_{i,u_1} \cdot nr_{i,u_2})}
 {\sqrt{\sum_{i} nr_{i,u_1}^2} \cdot \sqrt{\sum_{i} nr_{i,u_2}^2}}
 \]
 Ahol:
