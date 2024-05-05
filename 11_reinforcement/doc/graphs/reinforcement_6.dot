@@ -80,8 +80,8 @@ digraph reinforcement {
     hidden3 -> output2
     hidden4 -> output2
 
-    output1 -> random_sample
-    output2 -> random_sample
+    output1 -> random_sample [style="dashed"]
+    output2 -> random_sample [style="dashed"]
 
-    random_sample -> output
+    random_sample -> output [style="dashed"]
 }

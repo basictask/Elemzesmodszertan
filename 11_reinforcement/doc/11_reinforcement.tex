@@ -117,7 +117,7 @@ A szituációknak le kell írnia a kocsi helyzetét, a környezet állapotát, a
 \end{columns}
 \end{frame}
 
-\begin{frame}{Visszajelzések a megerősítéses tanulásban}
+\begin{frame}{Visszajelzések a \only<1>{felügyelt}\only<2>{megerősítéses} tanulásban}
 \begin{columns}
 \begin{column}{.5\textwidth}
 A két szemléletmód abban különbözik, hogy a felügyelő milyen visszajelzéseket ad a tanulónak.\par\medskip
@@ -374,7 +374,7 @@ A politika gradiens algoritmusok úgy optimalizálják a modellek paramétereit,
 \tableofcontents[currentsection]
 \end{frame}
 
-\begin{frame}{A $Q$ cselekvés minőség}
+\begin{frame}{A $Q$ állapot-cselekvés minőség}
 \begin{columns}
 \begin{column}{.5\textwidth}
 \begin{block}{Állapot-cselekvés minőség függvény}
@@ -395,7 +395,7 @@ Q_{\pi}(s,a)=E_{\pi}\left[G_{t}|S_{t}=s,A_{t}=a\right]=
 \end{columns}
 \end{frame}
 
-\begin{frame}{A $Q$-tanulás}
+\begin{frame}{$Q$-tanulás}
 \begin{columns}
 \begin{column}{.5\textwidth}
 \only<1>{A $Q$-tanulás nem egy politika, hanem egy értékalapú megerősítéses tanulási megközelítés. \textbf{Az értékalapú algoritmusok cselekvések és állapotok értékei alapján határozzák meg a politikát.}\par\medskip
@@ -441,9 +441,9 @@ Ahol:
 \begin{footnotesize}
 \begin{table}[h]
 \centering
-Példa $Q$-táblára:\par\medskip
+Példa $Q$-táblára 8 lehetséges állatottal és 4 cselekvéssel:\par\medskip
 \begin{tabular}{|c||c|c|c|c|}\hline
-Állapot & Fel & Le & Bal & Jobb \\\hline
+Állapot & $a_1$ & $a_2$ & $a_3$ & $a_4$ \\\hline
 $ s_1 $ & $0.1$ & \textcolor{green}{$0.6$} & $0.2$ & $0.3$ \\\hline
 $ s_2 $ & \textcolor{green}{$0.7$} & $0.1$ & $0.4$ & $0.2$ \\\hline
 $ s_3 $ & $0.2$ & $0.2$ & \textcolor{green}{$0.8$} & $0.4$ \\\hline
@@ -487,9 +487,12 @@ Ahol $A$ az összes cselekvés halmaza.
 Amikor a tanulás folyamata elkezdődik, az ügynöknek fel kell fedeznie a környezetét, és véletlen cselekvések által \textbf{tapasztalatot szereznie}.\par\smallskip
 Később, amikor már kellően tapasztalt \textbf{a véletlen cselekvéseket felváltják a legnagyobb értékű cselekvések}. Ennek megfelelően az $\varepsilon$ együttható csökken.\par\smallskip
 Az $\varepsilon$ csökkenését a párolgási együttható, $\varepsilon_{decay}$ határozza meg. Minden iterációban a változás:
+\begin{block}{}
+\vspace{-.2cm}
 \[
 \varepsilon \leftarrow \varepsilon \cdot \varepsilon_{decay}
 \]
+\end{block}
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
