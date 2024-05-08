@@ -472,8 +472,20 @@ Ahol $A$ az összes cselekvés halmaza.
 \end{block}
 \end{column}
 \begin{column}{.5\textwidth}
-\textbf{Felfedezés}: Véletlen cselekvés végrehajtása, $\varepsilon$ valószínűséggel.\par\medskip
-\textbf{Kizsákmányolás}: Már ismert, nagy jutalommal járó cselekvés végrehajtása, $1-\varepsilon$ valószínűséggel. 
+\only<1>{
+\begin{block}{Felfedezés}
+Véletlen cselekvés végrehajtása, $\varepsilon$ valószínűséggel:\\
+\[
+	a_t \leftarrow a \sim A
+\]
+\end{block}}
+\only<2>{
+\begin{block}{Kizsákmányolás}
+Már ismert, nagy jutalommal járó cselekvés végrehajtása, $1-\varepsilon$ valószínűséggel:\\
+\[
+	a_t \leftarrow \underset{a}{argmax}Q_t\left(a\right)
+\]
+\end{block}}
 \begin{center}
 \includegraphics[width=7cm, height=7cm, keepaspectratio]{graphs/reinforcement_8.png}
 \end{center}
@@ -496,7 +508,8 @@ Az $\varepsilon$ csökkenését a párolgási együttható, $\varepsilon_{decay}
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{center}
-\includegraphics[width=7cm, height=7cm, keepaspectratio]{images/reinforcement_15.png}
+\includegraphics<1>[width=7cm, height=6cm, keepaspectratio]{images/reinforcement_15.png}
+\includegraphics<2>[width=7cm, height=6cm, keepaspectratio]{images/reinforcement_16.png}
 \end{center}
 \end{column}
 \end{columns}
