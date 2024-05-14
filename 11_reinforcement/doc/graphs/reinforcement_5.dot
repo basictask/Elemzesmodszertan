@@ -10,6 +10,8 @@ digraph reinforcement {
         style="dotted"
         input1 [label="", shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
         input2 [label="", shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
+        input3 [label="", shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
+        input4 [label="", shape="circle", penwidth=2, style="filled", fillcolor="lightblue"]
         hidden1 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
         hidden2 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
         hidden3 [label="", shape="circle", penwidth=2, style="filled", fillcolor="orange"]
@@ -35,23 +37,26 @@ digraph reinforcement {
     }
 
     position:e -> input1 [style="dashed"]
-    velocity:e -> input1 [style="dashed"]
-    angle:e -> input1 [style="dashed"]
-    angular_velocity:e -> input1 [style="dashed"]
-
-    position:e -> input2 [style="dashed"]
     velocity:e -> input2 [style="dashed"]
-    angle:e -> input2 [style="dashed"]
-    angular_velocity:e -> input2 [style="dashed"]
+    angle:e -> input3 [style="dashed"]
+    angular_velocity:e -> input4 [style="dashed"]
 
     input1 -> hidden1
     input2 -> hidden1
+    input3 -> hidden1
+    input4 -> hidden1    
     input1 -> hidden2
     input2 -> hidden2
+    input3 -> hidden2
+    input4 -> hidden2
     input1 -> hidden3
     input2 -> hidden3
+    input3 -> hidden3
+    input4 -> hidden3
     input1 -> hidden4
     input2 -> hidden4
+    input3 -> hidden4
+    input4 -> hidden4
 
     hidden1 -> output1
     hidden2 -> output1
